@@ -99,6 +99,7 @@ export type Publication = {
     pdf?: string;
     doi?: string;
     hal?: string;
+    arxiv?: string;
     code?: string;
   };
 };
@@ -131,10 +132,13 @@ export const publications: Publication[] = [
     authors:
       "**Ilies Haouche**, Benjamin Reichert, Michael Baudoin, Palas Kumar Farsoiya",
     venue: {
-      fr: "Soumis à Journal of Computational Physics (avril 2026)",
-      en: "Submitted to Journal of Computational Physics (April 2026)",
+      fr: "Preprint — soumis à Journal of Computational Physics (avril 2026)",
+      en: "Preprint — submitted to Journal of Computational Physics (April 2026)",
     },
-    links: {},
+    links: {
+      hal: "https://hal.science/hal-05602246",
+      arxiv: "https://arxiv.org/abs/2605.27534",
+    },
   },
   {
     year: 2026,
@@ -387,6 +391,26 @@ export const projects: Project[] = [
     tags: ["Vulgarisation", "Python", "Basilisk", "YouTube"],
     links: {
       demo: "https://www.youtube.com/@ilies2924",
+    },
+  },
+  {
+    title: {
+      fr: "Tawqit — calcul astronomique des heures de prière",
+      en: "Tawqit — astronomical computation of prayer times",
+    },
+    period: "Projet personnel",
+    summary: {
+      fr: "Application (mobile & web) calculant les heures de prière à partir de la position du Soleil.",
+      en: "Mobile & web application computing prayer times from the Sun's position.",
+    },
+    description: {
+      fr: "Projet personnel à la croisée de l'astronomie et du développement logiciel : calcul de la position du Soleil (déclinaison solaire, équation du temps, angle horaire) pour déterminer les heures de prière selon la latitude, la longitude et les conventions d'angles crépusculaires. Développé en Flutter (Dart) pour Android, iOS et web.",
+      en: "Personal project at the intersection of astronomy and software development: computing the Sun's position (solar declination, equation of time, hour angle) to determine prayer times from latitude, longitude and twilight-angle conventions. Built in Flutter (Dart) for Android, iOS and web.",
+    },
+    tags: ["Astronomie", "Flutter", "Dart", "Position solaire", "Mobile & web"],
+    links: {
+      demo: "", // ➕ ajoute le lien de l'app (web / Play Store / App Store) si tu veux
+      repo: "", // ➕ ajoute le lien GitHub si tu veux
     },
   },
 ];
@@ -655,9 +679,5 @@ export const languages: Language[] = [
   {
     name: { fr: "Anglais", en: "English" },
     level: { fr: "Courant (recherche & enseignement)", en: "Fluent (research & teaching)" },
-  },
-  {
-    name: { fr: "Arabe", en: "Arabic" },
-    level: { fr: "[À COMPLÉTER — ton niveau]", en: "[TO COMPLETE — your level]" },
   },
 ];

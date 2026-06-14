@@ -106,6 +106,7 @@ export default function PublicationsList({
               <div className="mt-4 flex flex-wrap gap-2">
                 {pub.links.pdf && <LinkPill href={pub.links.pdf} label="PDF" />}
                 {pub.links.doi && <LinkPill href={pub.links.doi} label="DOI" />}
+                {pub.links.arxiv && <LinkPill href={pub.links.arxiv} label="arXiv" />}
                 {pub.links.hal && <LinkPill href={pub.links.hal} label="HAL" />}
                 {pub.links.code && <LinkPill href={pub.links.code} label="Code" />}
               </div>
