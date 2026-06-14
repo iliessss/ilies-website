@@ -118,7 +118,7 @@ export const publications: Publication[] = [
       en: "PNAS Nexus, vol. 5, issue 4, article 79 (April 2026)",
     },
     links: {
-      doi: "",
+      doi: "https://doi.org/10.1093/pnasnexus/pgag079",
     },
   },
   {
@@ -367,7 +367,7 @@ export const projects: Project[] = [
     },
     tags: ["Basilisk", "Open-source", "Surfactants"],
     links: {
-      repo: "", // ➕ ajoute l'URL de ton sandbox Basilisk
+      repo: "https://basilisk.fr/sandbox/haouche/",
     },
   },
   {
@@ -386,7 +386,7 @@ export const projects: Project[] = [
     },
     tags: ["Vulgarisation", "Python", "Basilisk", "YouTube"],
     links: {
-      demo: "", // ➕ ajoute l'URL de ta chaîne YouTube
+      demo: "https://www.youtube.com/@ilies2924",
     },
   },
 ];
