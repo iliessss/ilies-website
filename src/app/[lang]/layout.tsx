@@ -34,7 +34,7 @@ export async function generateMetadata({
       template: `%s · ${profile.name}`,
     },
     description: t(profile.tagline, locale),
-    metadataBase: new URL("https://ilies-haouche.vercel.app"), // remplace par ton URL/domaine définitif
+    metadataBase: new URL("https://ilies-haouche.com"), // domaine principal
     openGraph: {
       title: `${profile.name} — ${t(profile.role, locale)}`,
       description: t(profile.tagline, locale),

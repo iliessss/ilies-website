@@ -25,7 +25,7 @@ export const profile = {
     fr: "Lille, France",
     en: "Lille, France",
   } satisfies Localized,
-  email: "contact@al-iqraiyyah.com",
+  email: "ilies.haouche@univ-lille.fr",
   tagline: {
     fr: "Simulation numérique et analyse de stabilité des écoulements interfaciaux : transport de surfactants, effet Marangoni et instabilités d'interface.",
     en: "Numerical simulation and stability analysis of interfacial flows: surfactant transport, Marangoni effects and interfacial instabilities.",
@@ -70,7 +70,7 @@ export const profile = {
   ] satisfies Localized[],
   // Liens externes — laisse vide ("") pour masquer un lien
   links: {
-    email: "mailto:contact@al-iqraiyyah.com",
+    email: "mailto:ilies.haouche@univ-lille.fr",
     scholar: "https://scholar.google.com/citations?user=jdgNNagAAAAJ&hl=fr",
     orcid: "https://orcid.org/0009-0006-2545-7674",
     hal: "",
