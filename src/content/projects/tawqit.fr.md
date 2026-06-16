@@ -1,59 +1,95 @@
-## Qu'est-ce que Tawqit ?
+La détermination des heures de prière est une discipline d'une complexité
+fascinante qui se situe à la confluence de la **théologie**, de la **géographie**
+et de l'**astronomie sphérique**. Connue sous le nom de *ʿilm al-mīqāt* ou
+*tawqīt*, cette science est définie par les savants comme « la connaissance des
+règles et des méthodes permettant d'arriver aux heures des prières
+obligatoires ». Si, pour le fidèle moderne, un simple clic sur une application
+suffit, l'établissement de ces horaires repose sur des siècles d'observations
+rigoureuses et de développements mathématiques majeurs.
 
-**Tawqit** est une application (mobile et web) qui calcule les **heures de prière**
-pour n'importe quel lieu sur Terre. Plutôt que de s'appuyer sur des tables
-pré-calculées, l'application **calcule la position du Soleil** en temps réel à
-partir de la date, de l'heure et des coordonnées géographiques.
+## 1. L'héritage des Muwaqqitūn : entre foi et rigueur scientifique
 
-## Le principe astronomique
+Historiquement, la gestion du temps au sein de la civilisation musulmane
+incombait aux ***muwaqqitūn***. Contrairement à l'astronome classique qui étudie
+les astres pour des raisons physiques ou cosmologiques, le *muwaqqit* est un
+expert qui étudie l'astronomie **exclusivement pour l'appliquer aux finalités
+religieuses**.
 
-Les heures de prière sont définies par la **hauteur du Soleil** dans le ciel. Il
-faut donc savoir, à chaque instant, où se trouve le Soleil. Cela passe par
-quelques grandeurs astronomiques.
+Dès le IXᵉ siècle, avec des savants comme **al-Battānī** (qui mesura précisément
+l'excentricité de l'orbite terrestre), le monde musulman est devenu le centre
+névralgique de l'astronomie mondiale, alors que l'Europe traversait un « âge
+noir » scientifique. Les *muwaqqitūn* ont transformé les prescriptions
+coraniques et prophétiques, basées sur des signes visuels, en **données
+angulaires précises** grâce à la trigonométrie sphérique.
 
-### Déclinaison solaire
+## 2. Les outils et méthodes d'autrefois
 
-La **déclinaison** $\delta$ est la « latitude » du Soleil. Elle varie au cours de
-l'année et s'approche par :
+Avant l'ère des algorithmes informatiques, les savants utilisaient une panoplie
+d'instruments sophistiqués :
 
-$$
-\delta \approx 23.44^\circ \times \sin\!\left(\frac{360}{365}\,(N - 81)\right)
-$$
+- **L'astrolabe** (*al-mijānāt*) — instrument roi de l'époque, il permettait de
+  calculer l'altitude des astres et de convertir cette position en heure locale.
+- **Les cadrans solaires** (*al-ramliyyāt*) — essentiels pour le calcul du
+  *Ḏuhr* (midi) et de l'*ʿAṣr* (après-midi) en fonction de l'ombre portée d'un
+  gnomon.
+- **Les *azyāj*** (tables astronomiques) — des registres compilant les positions
+  du Soleil et de la Lune pour chaque jour de l'année, permettant d'anticiper les
+  horaires sans observation directe.
 
-où $N$ est le numéro du jour dans l'année.
+## 3. La traduction des signes légaux en degrés astronomiques
 
-### Angle horaire
+Le cœur du débat scientifique porte sur la conversion des signes visuels décrits
+dans la Loi (*Sharīʿa*) en **angles de dépression solaire** sous l'horizon :
 
-Pour une hauteur solaire donnée $h$, l'**angle horaire** $H$ (l'angle entre le
-Soleil et le méridien local) se déduit de la latitude $\varphi$ par :
+- **Le *Fajr* (aube)** — défini légalement par le *Fajr ṣādiq* (aube véritable),
+  une blancheur horizontale s'étendant à l'Est. Les anciens astronomes
+  (*mutaqaddimūn*) comme **al-Bīrūnī** (m. 440 H) et **Naṣīr al-Dīn al-Ṭūsī**
+  (m. 672 H) ont établi, par observation constante, que ce phénomène se produit
+  lorsque le Soleil est à **18° sous l'horizon**.
+- **L'*ʿIshāʾ* (nuit)** — il commence à la disparition du crépuscule (*shafaq*).
+  Si un consensus historique existait autour de 18°, des divergences sont
+  apparues plus tard (*mutaʾakhkhirūn*) pour distinguer la disparition de la
+  rougeur (parfois fixée à **17°**) de celle de la blancheur (fixée à **19°** par
+  l'école hanafite).
 
-$$
-\cos H = \frac{\sin h - \sin\varphi \, \sin\delta}{\cos\varphi \, \cos\delta}
-$$
+## 4. Les défis physiques : réfraction et Tamkīn
 
-L'heure de l'événement s'obtient alors à partir de $H$, de l'**équation du temps**
-et du midi solaire local.
+Le calcul des heures ne peut être purement théorique car l'atmosphère terrestre
+joue un rôle optique majeur. La **réfraction atmosphérique** fait apparaître le
+Soleil au-dessus de l'horizon alors qu'il est physiquement en dessous.
 
-## Des angles pour chaque prière
+Pour pallier ces incertitudes optiques et les variations d'altitude des lieux
+d'observation, les *muwaqqitūn* ont instauré le concept de ***Tamkīn*** (temps de
+précaution) : une marge de sécurité (souvent de quelques minutes) ajoutée ou
+soustraite aux calculs purement astronomiques pour garantir que le temps de la
+prière est réellement entré et éliminer tout doute.
 
-Chaque prière correspond à une hauteur solaire $h$ particulière :
+## 5. La problématique des hautes latitudes et de la pollution lumineuse
 
-| Prière   | Définition                                  |
-| -------- | ------------------------------------------- |
-| Fajr     | Soleil à $-18^\circ$ (selon la convention)  |
-| Dhuhr    | Passage du Soleil au méridien (midi solaire)|
-| Asr      | Longueur d'ombre = hauteur de l'objet (+1)  |
-| Maghrib  | Coucher du Soleil ($h \approx -0.83^\circ$) |
-| Isha     | Soleil à $-17^\circ$ / $-18^\circ$          |
+De nos jours, deux nouveaux défis se posent :
 
-Les conventions (angles de Fajr et Isha, méthode pour Asr) varient selon les
-organismes ; Tawqit propose donc plusieurs **méthodes de calcul** au choix.
+- **Les zones polaires et hautes latitudes** — dans les régions nordiques en
+  été, le Soleil ne descend jamais sous les 18° ou même 17°, rendant les signes
+  du *Fajr* et de l'*ʿIshāʾ* invisibles. Les savants appliquent alors le principe
+  du ***Takdīr*** (estimation), basé sur les horaires de villes plus proches ou
+  la division de la nuit.
+- **La pollution lumineuse** — depuis les années 1970, l'éclairage artificiel des
+  villes empêche l'observation visuelle des signes les plus ténus, comme l'aube
+  véritable. C'est pourquoi le recours aux calculs des *muwaqqitūn* experts
+  devient plus crucial que jamais, car la vision individuelle est souvent trompée
+  par le halo urbain.
 
-## Côté technique
+## L'application Tawqit
 
-L'application est développée en **Flutter (Dart)**, ce qui permet une seule base
-de code pour **Android, iOS et le web**. Le cœur de calcul implémente les
-formules ci-dessus, puis l'interface affiche les horaires, le compte à rebours
-vers la prochaine prière et les réglages (méthode, ajustements manuels, lieu).
+C'est dans cet héritage que s'inscrit **Tawqit**, l'application (mobile et web)
+que j'ai développée. Plutôt que de s'appuyer sur des tables pré-calculées, elle
+**calcule la position du Soleil** en temps réel — déclinaison solaire, équation
+du temps, angle horaire — pour déterminer les heures de prière en tout point du
+globe, selon la latitude, la longitude et l'**angle de dépression** choisi pour
+le *Fajr* et l'*ʿIshāʾ*.
 
-*Téléchargeable sur l'App Store et Google Play (liens en bas de page).*
+Elle reprend ainsi, en code, le travail des *muwaqqitūn* : traduire les signes du
+ciel en horaires. Développée en **Flutter (Dart)** pour Android, iOS et le web,
+elle propose plusieurs conventions de calcul et des ajustements manuels.
+
+*Disponible sur l'App Store et Google Play (liens en bas de page).*
