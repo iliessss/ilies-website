@@ -306,7 +306,8 @@ $(\sin h - \sin\varphi\sin\delta)/(\cos\varphi\cos\delta)$ y reste. Au-delà, le
 Soleil n'atteint **jamais** l'altitude $h$ visée — la prière n'a alors pas d'heure
 calculable ce jour-là (cas des hautes latitudes, traité au §5).
 
-![Fonction H = arccos et son domaine de définition](/tawqit/arccos_fr.png)
+<img src="/tawqit/arccos_light_fr.png" alt="Fonction H = arccos et son domaine de définition" class="only-light" />
+<img src="/tawqit/arccos_dark_fr.png" alt="Fonction H = arccos et son domaine de définition" class="only-dark" />
 
 *L'angle horaire $H = \arccos(\cdot)$ en fonction de son argument : défini
 uniquement sur $[-1, 1]$ (de $180^\circ$ à $0^\circ$). Dès que l'argument sort de
@@ -358,6 +359,19 @@ Aux latitudes élevées, le Soleil peut ne jamais franchir certaines altitudes. 
 n'arrive **jamais** — c'est le **jour polaire**, et le *Fajr* comme l'*ʿIshāʾ*
 n'ont pas d'heure. En hiver, plus au nord, il peut ne pas se lever du tout :
 c'est la **nuit polaire**.
+
+Tout se lit sur le signe de $x = \cos H$ (l'argument du §3) :
+
+- **$x < -1$ → jour polaire.** Le Soleil reste *toujours au-dessus* de l'altitude
+  visée. Au coucher ($h \approx 0$), c'est le **Soleil de minuit** ; pour le
+  *Fajr*/*ʿIshāʾ* ($h = -18^\circ$), il ne descend jamais assez bas pour que
+  l'obscurité soit complète — les **nuits blanches**.
+- **$x > 1$ → nuit polaire.** Le Soleil reste *toujours en dessous* de l'altitude
+  visée. Au lever ($h \approx 0$), il ne franchit jamais l'horizon.
+
+Les seuils (hémisphère Nord) : le Soleil est **circumpolaire** (toujours visible)
+si $\delta > 90^\circ - \varphi$, et **jamais visible** si $\delta < \varphi -
+90^\circ$.
 
 Un même lieu connaît parfois **les deux** selon la saison. À Tromsø (Norvège,
 ~$69^\circ$ N), le Soleil ne se couche pas de mi-mai à fin juillet (jour polaire),

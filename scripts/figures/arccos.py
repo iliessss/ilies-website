@@ -11,7 +11,7 @@ Lancer :  python3 arccos.py
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-#plt.style.use('dark_background')
+plt.style.use('dark_background')
 
 # ───────────────────────── Données ─────────────────────────
 x  = np.linspace(-1.0, 1.0, 400)        # domaine de définition de arccos
@@ -32,21 +32,21 @@ for spine in ax.spines.values():
 ax.tick_params(axis='both', length=35, width=10)
 
 # La courbe sur [-1, 1]
-ax.plot(x, H, 'k')
+ax.plot(x, H, 'w')
 
 # Zones hors domaine (|x| > 1) : pas de solution -> jour/nuit polaire
-ax.axvspan(-1.5, -1.0, alpha=0.12, color='red')
-ax.axvspan( 1.0,  1.5, alpha=0.12, color='red')
+ax.axvspan(-1.5, -1.0, alpha=0.52, color='red')
+ax.axvspan( 1.0,  1.5, alpha=0.52, color='red')
 ax.axvline(-1.0, color='red', ls='--', lw=8)
 ax.axvline( 1.0, color='red', ls='--', lw=8)
 
 ax.set_xlim(-1.5, 1.5)
 ax.set_ylim(0, 180)
 ax.set_yticks([0, 45, 90, 135, 180])
-ax.set_xlabel(r"$\dfrac{\sin h-\sin\varphi\,\sin\delta}{\cos\varphi\,\cos\delta}$")
-ax.set_ylabel(r"$H=\arccos(\,\cdot\,)\ (^\circ)$")
+ax.set_xlabel(r"$x$")
+ax.set_ylabel(r"$f(x)$")
 
 # Pour enregistrer au lieu d'afficher :
-# fig.savefig("arccos_white.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("arccos_dark.pdf", dpi=36, bbox_inches="tight")
 
 plt.show()

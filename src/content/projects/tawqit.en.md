@@ -293,7 +293,8 @@ $(\sin h - \sin\varphi\sin\delta)/(\cos\varphi\cos\delta)$ stays there. Beyond i
 the Sun **never** reaches the target altitude $h$ — the prayer then has no
 computable time that day (the high-latitude case, treated in §5).
 
-![Function H = arccos and its domain](/tawqit/arccos_en.png)
+<img src="/tawqit/arccos_light_en.png" alt="Function H = arccos and its domain" class="only-light" />
+<img src="/tawqit/arccos_dark_en.png" alt="Function H = arccos and its domain" class="only-dark" />
 
 *The hour angle $H = \arccos(\cdot)$ as a function of its argument: defined only on
 $[-1, 1]$ (from $180^\circ$ to $0^\circ$). As soon as the argument leaves this
@@ -342,6 +343,19 @@ At high latitudes the Sun may never cross certain altitudes. In summer it does n
 descend to $18^\circ$ below the horizon: astronomical dawn **never** comes — this
 is the **polar day**, and *Fajr* and *ʿIshāʾ* have no time. In winter, farther
 north, it may not rise at all: that is the **polar night**.
+
+It all comes down to the sign of $x = \cos H$ (the argument from §3):
+
+- **$x < -1$ → polar day.** The Sun stays *always above* the target altitude. At
+  sunset ($h \approx 0$) this is the **midnight Sun**; for *Fajr*/*ʿIshāʾ*
+  ($h = -18^\circ$), it never sinks low enough for full darkness — the **white
+  nights**.
+- **$x > 1$ → polar night.** The Sun stays *always below* the target altitude. At
+  sunrise ($h \approx 0$), it never crosses the horizon.
+
+The thresholds (northern hemisphere): the Sun is **circumpolar** (always visible)
+if $\delta > 90^\circ - \varphi$, and **never visible** if $\delta < \varphi -
+90^\circ$.
 
 The same place may see **both**, depending on the season. At Tromsø (Norway,
 ~$69^\circ$ N), the Sun does not set from mid-May to late July (polar day), and
