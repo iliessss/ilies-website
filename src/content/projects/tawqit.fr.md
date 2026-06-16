@@ -15,7 +15,7 @@ horaires reposent en réalité sur des siècles d'observation et de mathématiqu
 <img src="/tawqit/dome_prieres_dark.png" alt="Positions du Soleil et horaires de prière sur le dôme céleste" class="only-dark" />
 
 *Les horaires se lisent sur la course du Soleil. Sous l'horizon Est, le *Fajr*
-(aube, $-18^\circ$) ; au lever, le *Chourūq* ; au passage au méridien, le *Ḏuhr* ;
+(aube, $-18^\circ$) ; au lever, le *Chourouq* ; au passage au méridien, le *Ḏuhr* ;
 l'après-midi, l'*Asr* ; au coucher, le *Maghrib* ; puis, sous l'horizon Ouest, la
 fin du crépuscule marque l'*ʿIshāʾ* ($-18^\circ$). Toute la science du tawqīt
 consiste à convertir ces positions en heures.*
@@ -381,8 +381,8 @@ $$t_{\text{Ḏuhr}} = 12 + \mathrm{TZ} - \frac{\lambda}{15} - \frac{E}{60}.$$
 **Fajr** — aube astronomique, le Soleil à $h = -18^\circ$ sous l'horizon :
 $$t_{\text{Fajr}} = t_{\text{Ḏuhr}} - \frac{H(-18^\circ)}{15}.$$
 
-**Chourūq** (lever) — la **première partie du bord supérieur** du Soleil apparaît à l'horizon visible, $h = h_0$ :
-$$t_{\text{Chourūq}} = t_{\text{Ḏuhr}} - \frac{H(h_0)}{15}.$$
+**Chourouq** (lever) — la **première partie du bord supérieur** du Soleil apparaît à l'horizon visible, $h = h_0$ :
+$$t_{\text{Chourouq}} = t_{\text{Ḏuhr}} - \frac{H(h_0)}{15}.$$
 
 **ʿAṣr** — l'altitude est fixée par la longueur de l'ombre, $t = 1$ (majorité) ou $2$ (ḥanafite) :
 $$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\qquad t_{\text{ʿAṣr}} = t_{\text{Ḏuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
@@ -405,7 +405,7 @@ proche, division de la nuit).
 <img src="/tawqit/six_prieres_dark.png" alt="Les six horaires au fil de l'année à La Mecque" class="only-dark" />
 
 *Les six horaires calculés jour par jour à La Mecque (UTC+3, sans changement
-d'heure). Le *Ḏuhr* bouge peu (équation du temps) ; *Fajr*/*Chourūq* et
+d'heure). Le *Ḏuhr* bouge peu (équation du temps) ; *Fajr*/*Chourouq* et
 *Maghrib*/*ʿIshāʾ* s'écartent du midi au gré des saisons, au rythme de la
 déclinaison.*
 
@@ -664,20 +664,20 @@ l'année, à Roubaix ($50{,}7^\circ$ N) :
 
 *Horaire calculé sans réfraction ($R=0$), en conditions standard ($1013$ hPa,
 $15$ °C), en air froid et dense ($1030$ hPa, $-15$ °C) et en altitude
-($2500$ m). Pour le *Maghrib* et le *Chourūq*, les courbes s'écartent de
+($2500$ m). Pour le *Maghrib* et le *Chourouq*, les courbes s'écartent de
 plusieurs minutes ; pour l'*ʿAṣr*, elles se **superposent**.*
 
-- **Maghrib & Chourūq** — le Soleil frôle l'horizon, où la réfraction est
+- **Maghrib & Chourouq** — le Soleil frôle l'horizon, où la réfraction est
   maximale : pression, température et surtout altitude (abaissement d'horizon)
   **décalent l'horaire de plusieurs minutes** — le *Maghrib* est retardé, le
-  *Chourūq* avancé.
+  *Chourouq* avancé.
 - **ʿAṣr** — le Soleil est bien plus haut ($13$–$33^\circ$) : la réfraction n'y
   vaut que $1$–$4'$ et **toutes les courbes se confondent** — l'effet est
   négligeable (Tawqit ne l'y applique d'ailleurs pas).
 - **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
   etc.), ils intègrent déjà implicitement les conditions d'observation.
 
-En somme, la réfraction est **décisive au ras de l'horizon** (Maghrib, Chourūq) et
+En somme, la réfraction est **décisive au ras de l'horizon** (Maghrib, Chourouq) et
 **négligeable en hauteur** (ʿAṣr).
 
 ---

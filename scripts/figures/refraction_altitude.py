@@ -3,7 +3,7 @@ Réfraction atmosphérique en fonction de la hauteur du Soleil.
 
 Formule de Bennett (1982) : R(h) = 1 / tan(h + 7,31/(h + 4,4))  [minutes d'arc],
 h étant la hauteur (degrés). Maximale à l'horizon (~34'), elle s'effondre dès que
-le Soleil s'élève — d'où son rôle décisif au Maghrib/Chourūq et négligeable à l'ʿAṣr.
+le Soleil s'élève — d'où son rôle décisif au Maghrib/Chourouq et négligeable à l'ʿAṣr.
 
 Génère les versions claire et sombre (fond transparent, annotations theme-aware).
 
@@ -33,7 +33,7 @@ def make(dark):
     ax.axvspan(13, 33, color="#f59e0b", alpha=0.18, zorder=0)
     ax.plot(h, R, color=teal, zorder=3)
 
-    # Annotation Maghrib / Chourūq (horizon, ~34')
+    # Annotation Maghrib / Chourouq (horizon, ~34')
     ax.annotate(r"Maghrib / Chourouq" + "\n" + r"$h \approx 0^\circ$ : 34'",
                 xy=(0.4, R[0]-0.6), xytext=(6.5, 31.5), color=red, fontsize=64,
                 ha="left", va="center", fontweight="bold",
