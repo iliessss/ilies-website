@@ -53,15 +53,30 @@ def horizon_alt(alt):
     D  = 0.035333*math.sqrt(alt)
     return -(SD + R - 0.0024 + D)
 
-# ʿAṣr : altitude fixée par l'ombre (indépendante de l'altitude du lieu)
-asr_alt = np.degrees(np.arctan(1.0/(1.0 + np.tan(np.abs(phi - dl)))))
+# ʿAṣr corrigé de la réfraction (méthode Özlem 2016). La géométrie de l'ombre ne
+# dépend pas de l'altitude ; le SEUL canal est la réfraction ∝ pression, et la
+# pression chute avec l'altitude → on échelonne la réfraction par f(alt).
+ASR_T = 1.0   # facteur d'ombre (1 = majorité)
+
+def f_refrac(alt):
+    """Facteur d'échelle de la réfraction : pression barométrique / standard."""
+    P_alt = 1013.0 * math.exp(-alt / 8400.0)
+    return (P_alt / 1010.0) * (283.0 / (273.0 + T))
+
+def asr_corrected(alt):
+    """Altitude vraie corrigée du ʿAṣr (deg), réfraction échelonnée par l'altitude."""
+    f = f_refrac(alt)
+    Z  = 90.0 - np.degrees(np.abs(phi - dl))                         # hauteur vraie au midi
+    Zp = Z + f * 0.017 / np.tan(np.radians(Z + 10.3/(Z + 5.11)))     # apparente (Sæmundsson)
+    Ap = np.degrees(np.arctan(1.0 / (1.0/np.tan(np.radians(Zp)) + ASR_T)))  # ʿAṣr apparent
+    return Ap - f * (1.0/np.tan(np.radians(Ap + 7.31/(Ap + 4.4)))) / 60.0    # vrai (Bennett)
 
 def times(prayer, alt):
     if prayer == "Chourouq":
         return dhuhr - H_for(horizon_alt(alt))/15.0
     if prayer == "Maghrib":
         return dhuhr + H_for(horizon_alt(alt))/15.0
-    return dhuhr + H_for(asr_alt)/15.0      # ʿAṣr (ne dépend pas de alt)
+    return dhuhr + H_for(asr_corrected(alt))/15.0      # ʿAṣr (réfraction ∝ pression(alt))
 
 TITRES = {"Chourouq": "Chourouq (lever)", "Maghrib": "Maghrib (coucher)", "Asr": "ʿAṣr"}
 COLS   = ["#01f8ec", "#22c55e", "#ffae00", "#ff5a4d", "#c300ff"]
@@ -84,7 +99,23 @@ def make(prayer, dark):
     ax.set_ylabel(r"Heure locale")
     ax.set_xlim(0, 365)
     ax.set_title(TITRES[prayer], fontsize=150, color=fg, pad=30)
-    ax.legend(loc="best", frameon=False, fontsize=70, ncol=2, title="Altitude", title_fontsize=80)
+    loc = "upper left" if prayer == "Asr" else "best"
+    ax.legend(loc=loc, frameon=False, fontsize=70, ncol=2, title="Altitude", title_fontsize=80)
+
+    # ʿAṣr : l'effet de l'altitude n'est que de quelques secondes → encart de l'écart
+    # (t(alt) − t(0 m), en secondes) qui isole proprement l'effet sur l'année.
+    if prayer == "Asr":
+        ref = times("Asr", 0)
+        axin = ax.inset_axes([0.30, 0.10, 0.45, 0.33])
+        for alt, col in zip(ALTITUDES, COLS):
+            axin.plot(N, (times("Asr", alt) - ref) * 3600.0, color=col, lw=9)
+        axin.set_xlim(0, 365)
+        axin.set_facecolor("none")
+        for sp in axin.spines.values():
+            sp.set_edgecolor(fg); sp.set_linewidth(6)
+        axin.tick_params(colors=fg, labelsize=46, length=18, width=6)
+        axin.set_title(r"écart vs $0$ m (s)", color=fg, fontsize=58, pad=10)
+
     suffix = "dark" if dark else "light"
     fig.savefig(f"../../public/tawqit/refraction_{prayer.lower()}_{suffix}.png",
                 dpi=36, bbox_inches="tight", transparent=True)

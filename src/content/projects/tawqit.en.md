@@ -642,14 +642,16 @@ year, at Roubaix ($50.7^\circ$ N):
 
 *Time for five site elevations ($0$ to $8000$ m). The higher you stand, the lower
 the horizon drops: *Maghrib* is **delayed** and *Shurūq* **advanced** by several
-minutes in the mountains. *ʿAṣr*, set by the shadow length and not by the horizon,
-is **unaffected** — the five curves overlap.*
+minutes in the mountains. *ʿAṣr*, set by the shadow and not by the horizon, is
+nearly insensitive: the curves coincide at the hour scale — only refraction
+(∝ pressure, hence ∝ altitude) adds a few-**second** shift, shown in the inset.*
 
 - **Maghrib & Shurūq** — the Sun grazes the horizon: the site's elevation
   **lowers the horizon** and **shifts the time by several minutes** — *Maghrib*
   delayed, sunrise advanced, more so the higher you go.
 - **ʿAṣr** — its time is set by the **shadow** length, not by the horizon:
-  elevation changes **nothing** — all curves coincide.
+  elevation only acts **through refraction** (∝ pressure), for a few seconds
+  (inset) — negligible in practice.
 - **Fajr & ʿIshāʾ** — defined by a chosen **depression angle** ($18^\circ$, etc.),
   they already implicitly fold in the observation conditions.
 

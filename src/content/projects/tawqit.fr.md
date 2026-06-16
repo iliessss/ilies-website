@@ -664,14 +664,17 @@ horaire au fil de l'année, à Roubaix ($50{,}7^\circ$ N) :
 
 *Horaire pour cinq altitudes du lieu ($0$ à $8000$ m). Plus on est haut, plus
 l'horizon s'abaisse : le *Maghrib* est **retardé** et le *Chourouq* **avancé** de
-plusieurs minutes en montagne. L'*ʿAṣr*, fixé par la longueur de l'ombre et non
-par l'horizon, n'est **pas affecté** — les cinq courbes se superposent.*
+plusieurs minutes en montagne. L'*ʿAṣr*, fixé par l'ombre et non par l'horizon, est
+quasi insensible : les courbes se confondent à l'échelle de l'heure — seule la
+réfraction (∝ pression, donc ∝ altitude) introduit un écart de quelques
+**secondes**, visible dans l'encart.*
 
 - **Maghrib & Chourouq** — le Soleil frôle l'horizon : l'altitude du lieu
   **abaisse l'horizon** et **décale l'horaire de plusieurs minutes** — le
   *Maghrib* est retardé, le *Chourouq* avancé, d'autant plus qu'on monte haut.
 - **ʿAṣr** — son heure est fixée par la longueur de l'**ombre**, pas par
-  l'horizon : l'altitude n'y change **rien** — toutes les courbes se confondent.
+  l'horizon : l'altitude ne joue **qu'au travers de la réfraction** (∝ pression),
+  pour quelques secondes seulement (encart) — négligeable en pratique.
 - **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
   etc.), ils intègrent déjà implicitement les conditions d'observation.
 
