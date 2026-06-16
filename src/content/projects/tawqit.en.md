@@ -643,17 +643,18 @@ year, at Roubaix ($50.7^\circ$ N):
 *Time for five site elevations ($0$ to $8000$ m). The higher you stand, the lower
 the horizon drops: *Maghrib* is **delayed** and *Shurūq* **advanced** by several
 minutes in the mountains. *ʿAṣr*, set by the shadow and not by the horizon, is
-nearly insensitive: at the hour scale the curves coincide, so we plot its **shift
-in seconds** relative to sea level (third graph). This shift, due to refraction
-alone (∝ pressure, hence ∝ altitude), stays under ~$20$ s at $8000$ m and deepens
-in winter.*
+nearly insensitive: at the hour scale the curves coincide, so we plot the **delay
+(in seconds)** that refraction imposes on it — i.e. how far the real *ʿAṣr* falls
+**after** the purely geometric one (third graph). This delay reaches ~$30$ s at sea
+level in winter and **shrinks with altitude** (less pressure → less refraction), as
+it does in summer.*
 
 - **Maghrib & Shurūq** — the Sun grazes the horizon: the site's elevation
   **lowers the horizon** and **shifts the time by several minutes** — *Maghrib*
   delayed, sunrise advanced, more so the higher you go.
 - **ʿAṣr** — its time is set by the **shadow** length, not by the horizon:
-  elevation only acts **through refraction** (∝ pressure), for a few seconds
-  (third graph) — negligible in practice.
+  refraction **delays** it by at most a few tens of seconds (third graph), and that
+  delay shrinks with altitude — negligible in practice.
 - **Fajr & ʿIshāʾ** — defined by a chosen **depression angle** ($18^\circ$, etc.),
   they already implicitly fold in the observation conditions.
 

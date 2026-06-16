@@ -666,16 +666,17 @@ horaire au fil de l'année, à Roubaix ($50{,}7^\circ$ N) :
 l'horizon s'abaisse : le *Maghrib* est **retardé** et le *Chourouq* **avancé** de
 plusieurs minutes en montagne. L'*ʿAṣr*, fixé par l'ombre et non par l'horizon, est
 quasi insensible : à l'échelle de l'heure les courbes se confondent, on trace donc
-son **écart en secondes** par rapport au niveau de la mer (3ᵉ graphe). Cet écart,
-dû à la seule réfraction (∝ pression, donc ∝ altitude), ne dépasse pas ~$20$ s à
-$8000$ m, et se creuse en hiver.*
+le **retard** (en secondes) que la réfraction impose au ʿAṣr — c'est-à-dire de
+combien le ʿAṣr réel tombe **après** le ʿAṣr purement géométrique (3ᵉ graphe). Ce
+retard atteint ~$30$ s au niveau de la mer en hiver, et **diminue avec l'altitude**
+(moins de pression → moins de réfraction) comme en été.*
 
 - **Maghrib & Chourouq** — le Soleil frôle l'horizon : l'altitude du lieu
   **abaisse l'horizon** et **décale l'horaire de plusieurs minutes** — le
   *Maghrib* est retardé, le *Chourouq* avancé, d'autant plus qu'on monte haut.
 - **ʿAṣr** — son heure est fixée par la longueur de l'**ombre**, pas par
-  l'horizon : l'altitude ne joue **qu'au travers de la réfraction** (∝ pression),
-  pour quelques secondes seulement (3ᵉ graphe) — négligeable en pratique.
+  l'horizon : la réfraction le **retarde** de quelques dizaines de secondes au
+  plus (3ᵉ graphe), et ce retard diminue avec l'altitude — négligeable en pratique.
 - **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
   etc.), ils intègrent déjà implicitement les conditions d'observation.
 

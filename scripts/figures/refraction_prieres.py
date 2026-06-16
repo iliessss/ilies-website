@@ -63,20 +63,25 @@ def f_refrac(alt):
     P_alt = 1013.0 * math.exp(-alt / 8400.0)
     return (P_alt / 1010.0) * (283.0 / (273.0 + T))
 
-def asr_corrected(alt):
-    """Altitude vraie corrigée du ʿAṣr (deg), réfraction échelonnée par l'altitude."""
-    f = f_refrac(alt)
+def asr_angle(f):
+    """Altitude vraie du ʿAṣr (deg) pour un facteur de réfraction f (f=0 → géométrique)."""
     Z  = 90.0 - np.degrees(np.abs(phi - dl))                         # hauteur vraie au midi
     Zp = Z + f * 0.017 / np.tan(np.radians(Z + 10.3/(Z + 5.11)))     # apparente (Sæmundsson)
     Ap = np.degrees(np.arctan(1.0 / (1.0/np.tan(np.radians(Zp)) + ASR_T)))  # ʿAṣr apparent
     return Ap - f * (1.0/np.tan(np.radians(Ap + 7.31/(Ap + 4.4)))) / 60.0    # vrai (Bennett)
 
+# Heure du ʿAṣr SANS réfraction (référence géométrique, identique pour toute altitude)
+asr_time_geom = dhuhr + H_for(asr_angle(0.0)) / 15.0
+
+def asr_delay_seconds(alt):
+    """Retard du ʿAṣr dû à la réfraction (s) à une altitude donnée (réfraction ∝ pression)."""
+    t = dhuhr + H_for(asr_angle(f_refrac(alt))) / 15.0
+    return (t - asr_time_geom) * 3600.0
+
 def times(prayer, alt):
     if prayer == "Chourouq":
         return dhuhr - H_for(horizon_alt(alt))/15.0
-    if prayer == "Maghrib":
-        return dhuhr + H_for(horizon_alt(alt))/15.0
-    return dhuhr + H_for(asr_corrected(alt))/15.0      # ʿAṣr (réfraction ∝ pression(alt))
+    return dhuhr + H_for(horizon_alt(alt))/15.0      # Maghrib
 
 TITRES = {"Chourouq": "Chourouq (lever)", "Maghrib": "Maghrib (coucher)", "Asr": "ʿAṣr"}
 COLS   = ["#01f8ec", "#22c55e", "#ffae00", "#ff5a4d", "#c300ff"]
@@ -93,13 +98,13 @@ def make(prayer, dark):
     ax.tick_params(axis='both', length=35, width=10)
 
     if prayer == "Asr":
-        # À l'échelle de l'heure, l'altitude est invisible (effet de quelques s) :
-        # on trace donc l'ÉCART (en secondes) par rapport au niveau de la mer, où
-        # les altitudes se distinguent nettement.
-        ref = times("Asr", 0)
+        # À l'échelle de l'heure, l'effet de l'altitude est invisible (quelques s).
+        # On trace donc le RETARD du ʿAṣr dû à la réfraction (ʿAṣr réel − ʿAṣr sans
+        # réfraction), en secondes : il est positif, et diminue avec l'altitude
+        # (moins de pression → moins de réfraction).
         for alt, col in zip(ALTITUDES, COLS):
-            ax.plot(N, (times("Asr", alt) - ref) * 3600.0, color=col, label=f"{alt} m")
-        ax.set_ylabel(r"écart vs $0$ m  (s)")
+            ax.plot(N, asr_delay_seconds(alt), color=col, label=f"{alt} m")
+        ax.set_ylabel(r"retard dû à la réfraction  (s)")
     else:
         for alt, col in zip(ALTITUDES, COLS):
             ax.plot(N, times(prayer, alt), color=col, label=f"{alt} m")
