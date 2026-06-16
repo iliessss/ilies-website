@@ -210,7 +210,11 @@ $$
 \mathbf{r}_{eq} = R_x(\varepsilon)\,\mathbf{r}_e,
 \qquad
 R_x(\varepsilon) = \begin{bmatrix} 1 & 0 & 0 \\ 0 & \cos\varepsilon & -\sin\varepsilon \\ 0 & \sin\varepsilon & \cos\varepsilon \end{bmatrix}
-\;\Rightarrow\;
+$$
+
+which gives
+
+$$
 \mathbf{r}_{eq} = \begin{bmatrix} \cos\lambda \\ \cos\varepsilon\,\sin\lambda \\ \sin\varepsilon\,\sin\lambda \end{bmatrix}
 $$
 
