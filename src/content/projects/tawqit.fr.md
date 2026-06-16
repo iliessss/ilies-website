@@ -631,7 +631,8 @@ point marqué correspond aux conditions standard ($1013$ hPa, $15$ °C, soit ~$3
 La réfraction est **maximale à l'horizon** (~$34'$) et décroît très vite avec la
 hauteur du Soleil :
 
-![Réfraction en fonction de l'altitude du Soleil](/tawqit/refraction_altitude_fr.png)
+<img src="/tawqit/refraction_altitude_light.png" alt="Réfraction en fonction de l'altitude du Soleil" class="only-light" />
+<img src="/tawqit/refraction_altitude_dark.png" alt="Réfraction en fonction de l'altitude du Soleil" class="only-dark" />
 
 *La réfraction $R$ en fonction de l'altitude vraie du Soleil (formule de Bennett,
 1982). À l'horizon ($h \approx 0$), elle atteint ~$34'$ ; à l'altitude de l'Asr

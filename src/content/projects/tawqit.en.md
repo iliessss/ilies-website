@@ -610,7 +610,8 @@ point is the standard condition ($1013$ hPa, $15$ °C, i.e. ~$34'$).*
 Refraction is **maximal at the horizon** (~$34'$) and decreases very quickly with
 the Sun's altitude:
 
-![Refraction versus the Sun's altitude](/tawqit/refraction_altitude_en.png)
+<img src="/tawqit/refraction_altitude_light.png" alt="Refraction versus the Sun's altitude" class="only-light" />
+<img src="/tawqit/refraction_altitude_dark.png" alt="Refraction versus the Sun's altitude" class="only-dark" />
 
 *Refraction $R$ versus the Sun's true altitude (Bennett's formula, 1982). At the
 horizon ($h \approx 0$) it reaches ~$34'$; at the Asr altitude ($13$–$33^\circ$)
