@@ -541,30 +541,59 @@ Beyond the depression angles, a **physical correction** applies to every
 horizon-related time: the Sun's light does not reach us in a straight line. This
 is **atmospheric refraction**.
 
-## 1. Why the atmosphere bends light
+## 1. Why the atmosphere bends light — a derivation
 
-The atmosphere is a **stratified fluid**: air is denser below than above. The
-refractive index $n$ increases with density, so a ray crossing ever-thinner
-layers **bends** toward the ground. In spherically stratified geometry,
-Snell's law gives the **refraction invariant**:
+The atmosphere is a **stratified fluid**: under gravity, air is denser below than
+above. Since the refractive index $n$ grows with density, a ray plunging toward
+ever-denser layers **bends** toward the ground — so the body appears **higher**
+than it truly is.
+
+**1) The refraction invariant (Bouguer's theorem).** Model the atmosphere as
+concentric spherical shells of index $n(r)$ centered on the Earth. At each
+interface Snell's law $n_1\sin i_1 = n_2\sin i_2$ holds; combined with the
+geometric relation between shells (law of sines in the ray–center triangle), it
+yields an **invariant** along the ray:
 
 $$ n(r)\, r\, \sin z = \text{const} $$
 
-($z$ = zenith distance, $r$ = distance to the Earth's center).
+where $z$ is the zenith distance (angle to the local vertical) and $r$ the
+distance to the Earth's center — the spherical analogue of the plane-stratified
+invariant $n\sin z$.
 
-The link with **fluid mechanics** is direct. The index relates to the air density
-$\rho$ through the Gladstone-Dale relation, $n - 1 \approx k\,\rho$; and air, in
-**hydrostatic equilibrium** and treated as an ideal gas, satisfies
+**2) The refraction angle.** Differentiating the invariant and integrating along
+the path, the total angular gap between true and apparent direction is
 
-$$ \rho = \frac{P}{R_s\,T} $$
+$$ R = -\int_{\text{ground}}^{\infty} \tan z \;\frac{\mathrm{d}n}{n}. $$
 
-Refraction is therefore proportional to $P/T$ — exactly the factor found in
-Tawqit:
+Since $n$ stays very close to $1$ ($n_0 - 1 \sim 3\times10^{-4}$), $\mathrm{d}n/n
+\approx \mathrm{d}n$; for an atmosphere thin compared to the Earth's radius
+(near-plane layers), $z$ varies little and
+
+$$ R \approx (n_0 - 1)\,\tan z, $$
+
+where $n_0$ is the index **at the ground** — Laplace's $\tan z$ law.
+
+**3) The link with fluid mechanics.** Two relations close the problem:
+
+- **Gladstone-Dale** ties index to density: $n - 1 = k\,\rho$
+  ($k \approx 2.3\times10^{-4}\ \mathrm{m^3\,kg^{-1}}$ for air);
+- air, an **ideal gas** in **hydrostatic equilibrium**, has at the ground
+  $\rho_0 = \dfrac{P}{R_s\,T}$ ($P$ pressure, $T$ absolute temperature, $R_s$ the
+  specific gas constant of air).
+
+Combining:
+
+$$ R \approx k\,\rho_0\,\tan z = \frac{k}{R_s}\,\frac{P}{T}\,\tan z. $$
+
+Refraction is therefore **proportional to $P/T$**: cold, dense air refracts more
+than warm, rarefied air. This is exactly the factor found in Tawqit, where the
+**horizon** value ($z \to 90^\circ$: the $\tan z$ law diverges and spherical
+geometry caps $R$ at ~$34'$) reads
 
 $$ R \approx 0.569^\circ \times \frac{0.28\,P}{T + 273} $$
 
 ($P$ in hPa, $T$ in °C), to which the **horizon dip** $D = 0.0353\,\sqrt{h_{\text{alt}}}$
-(from the site's altitude) is added.
+(from the site's altitude, in metres) is added.
 
 ## 2. The effect at the horizon
 
@@ -586,23 +615,36 @@ fully disappeared.
 
 ## 3. A very uneven impact across prayers
 
-- **Maghrib & Shurūq** — the Sun grazes the horizon: refraction is maximal and
-  **shifts the time by several minutes**.
+The decisive factor is the **Sun's altitude**. By varying the atmospheric
+conditions (pressure, temperature) and the site's altitude — hence refraction and
+horizon dip — we can measure their effect on each time over the year, at Roubaix
+($50.7^\circ$ N):
 
-![Shift from refraction: Maghrib, sunrise, Asr](/tawqit/refraction_impact_en.png)
+<img src="/tawqit/refraction_maghrib_light.png" alt="Effect of refraction on Maghrib" class="only-light" />
+<img src="/tawqit/refraction_maghrib_dark.png" alt="Effect of refraction on Maghrib" class="only-dark" />
 
-*Time shift from the corrected horizon (refraction + semi-diameter + parallax +
-altitude), at Roubaix. *Maghrib* is **delayed** and sunrise **advanced** by several
-minutes; *Asr*, with the Sun much higher, is barely affected.*
+<img src="/tawqit/refraction_chourouq_light.png" alt="Effect of refraction on sunrise" class="only-light" />
+<img src="/tawqit/refraction_chourouq_dark.png" alt="Effect of refraction on sunrise" class="only-dark" />
 
+<img src="/tawqit/refraction_asr_light.png" alt="Effect of refraction on Asr" class="only-light" />
+<img src="/tawqit/refraction_asr_dark.png" alt="Effect of refraction on Asr" class="only-dark" />
+
+*Time computed with no refraction ($R=0$), in standard conditions ($1013$ hPa,
+$15$ °C), in cold dense air ($1030$ hPa, $-15$ °C) and at altitude ($2500$ m).
+For *Maghrib* and *Shurūq* the curves spread by several minutes; for *ʿAṣr* they
+**overlap**.*
+
+- **Maghrib & Shurūq** — the Sun grazes the horizon, where refraction is maximal:
+  pressure, temperature and especially altitude (horizon dip) **shift the time by
+  several minutes** — *Maghrib* is delayed, sunrise advanced.
 - **ʿAṣr** — the Sun is much higher ($13$–$33^\circ$): refraction is only
-  $1$–$4'$, a **small** effect (Tawqit does not even apply it there), though it
-  has been the subject of dedicated studies.
+  $1$–$4'$ and **all the curves coincide** — the effect is negligible (Tawqit
+  does not even apply it there).
 - **Fajr & ʿIshāʾ** — defined by a chosen **depression angle** ($18^\circ$, etc.),
   they already implicitly fold in the observation conditions.
 
 In short, refraction is **decisive at the horizon** (Maghrib, Shurūq) and
-**negligible high up** (Asr) — as the rapid decay of the curve above shows.
+**negligible high up** (ʿAṣr).
 
 ---
 

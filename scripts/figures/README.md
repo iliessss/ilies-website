@@ -29,7 +29,11 @@ réfraction). Génère :
 | `prieres_makkah_{fr,en}.png`          | Les 6 horaires sur l'année (La Mecque, sans DST) |
 | `polaire_fajr_{fr,en}.png`            | Heure du Fajr par latitude (jours polaires) |
 | `refraction_altitude_{fr,en}.png`     | Réfraction en fonction de l'altitude (Bennett 1982) |
-| `refraction_impact_{fr,en}.png`       | Décalage dû à la réfraction (Maghrib, Chourouq, Asr) |
+
+Figures autonomes (un script chacune, export clair/sombre transparent) :
+`declinaison.py`, `equation_du_temps.py`, `arccos.py`, `six_prieres.py`,
+`polaire_fajr.py`, `refraction_prieres.py` (3 figures `refraction_{chourouq,maghrib,asr}_{light,dark}.png` :
+effet de P/T/altitude sur l'horaire), `triangle_spherique` & `angle_depression` (images de l'utilisateur).
 
 Style « thèse » (gros traits, grandes polices) réglé via `plt.rcParams` en haut
 du fichier.

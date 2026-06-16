@@ -157,28 +157,8 @@ for lang, t in LAB.items():
     ax.set_xlabel(t["alt"]); ax.set_ylabel(t["refr"]); ax.set_xlim(0,30); ax.set_ylim(0,38)
     fig.savefig(f"{OUT}/refraction_altitude_{lang}.png"); plt.close(fig)
 
-    # 7) Impact de la réfraction (Chourouq, Maghrib, Asr) — Roubaix
-    lat=50.6942; phi=math.radians(lat); d=np.radians(delta)
-    SD=0.2666/Rs; Rd=0.569333*(0.28*1013.25/(15+273.0)); Dd=0.035333*math.sqrt(50)
-    def Hd(theta):
-        c=(np.cos(theta)-math.sin(phi)*np.sin(d))/(math.cos(phi)*np.cos(d))
-        return np.degrees(np.arccos(np.clip(c,-1,1)))
-    th_w=np.radians(90+SD+Rd-0.0024+Dd); th_g=math.radians(90.0)
-    dt_horizon=(Hd(th_w)-Hd(th_g))/15.0*60.0     # Maghrib(+) / Chourouq(-)
-    # Asr : décalage si on corrige l'altitude de R(h_asr)
-    x=np.abs(phi-d); aAsr=np.degrees(np.arctan(1.0/(1.0+np.tan(x))))
-    Rasr_deg=bennett(aAsr)/60.0
-    def HA(h):
-        c=(np.sin(np.radians(h))-math.sin(phi)*np.sin(d))/(math.cos(phi)*np.cos(d)); return np.degrees(np.arccos(np.clip(c,-1,1)))
-    dt_asr=(HA(aAsr - Rasr_deg)-HA(aAsr))/15.0*60.0
-    fig, ax = new_ax()
-    ax.plot(N, dt_horizon, color=BLUE, label="Maghrib")
-    ax.plot(N, -dt_horizon, color=AMBER, label="Chourouq" if lang=="fr" else "Sunrise")
-    ax.plot(N, dt_asr, color=GREEN, label="Asr")
-    ax.axhline(0, color=SLATE, lw=6, ls=":")
-    ax.set_ylabel(t["shift"]); ax.legend(loc="center left", bbox_to_anchor=(1.01,0.5), frameon=False, fontsize=100)
-    maxis(ax, t)
-    fig.savefig(f"{OUT}/refraction_impact_{lang}.png"); plt.close(fig)
+    # (Le graphe « impact de la réfraction » a été remplacé par les 3 figures
+    #  refraction_{chourouq,maghrib,asr} générées par refraction_prieres.py.)
 
 print("Graphes OK")
 

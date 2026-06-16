@@ -560,32 +560,61 @@ Au-delà des angles de dépression, une **correction physique** s'impose à tous
 horaires liés à l'horizon : la lumière du Soleil ne nous parvient pas en ligne
 droite. C'est la **réfraction atmosphérique**.
 
-## 1. Pourquoi l'atmosphère courbe la lumière
+## 1. Pourquoi l'atmosphère courbe la lumière — démonstration
 
-L'atmosphère est un **fluide stratifié** : l'air est plus dense en bas qu'en
-haut. Or l'indice de réfraction $n$ croît avec la densité ; un rayon traversant
-des couches de moins en moins denses se **courbe** vers le sol. En géométrie
-sphérique stratifiée, la loi de Snell-Descartes donne l'**invariant de
-réfraction** :
+L'atmosphère est un **fluide stratifié** : sous l'effet de la gravité, l'air est
+plus dense en bas qu'en haut. L'indice de réfraction $n$ croissant avec la
+densité, un rayon qui plonge vers des couches de plus en plus denses se
+**courbe** vers le sol — si bien que l'astre paraît **plus haut** qu'il ne l'est.
+
+**1) L'invariant de réfraction (théorème de Bouguer).** Modélisons l'atmosphère
+par des couches sphériques concentriques d'indice $n(r)$ centrées sur la Terre.
+À chaque interface, la loi de Snell-Descartes $n_1\sin i_1 = n_2\sin i_2$
+s'applique ; combinée à la relation géométrique entre couches (loi des sinus dans
+le triangle rayon–centre), elle fournit un **invariant** le long du rayon :
 
 $$ n(r)\, r\, \sin z = \text{const} $$
 
-($z$ = distance zénithale, $r$ = distance au centre de la Terre).
+où $z$ est la distance zénithale (angle au regard de la verticale locale) et $r$
+la distance au centre de la Terre — l'analogue sphérique de l'invariant
+$n\sin z$ d'un milieu plan stratifié.
 
-Le lien avec la **mécanique des fluides** est direct. L'indice est lié à la masse
-volumique $\rho$ de l'air par la relation de Gladstone-Dale, $n - 1 \approx
-k\,\rho$ ; et l'air, en **équilibre hydrostatique** et assimilé à un gaz parfait,
-vérifie
+**2) L'angle de réfraction.** En différentiant l'invariant et en intégrant le
+long du trajet, l'écart angulaire total entre direction vraie et direction
+apparente s'écrit
 
-$$ \rho = \frac{P}{R_s\,T} $$
+$$ R = -\int_{\text{sol}}^{\infty} \tan z \;\frac{\mathrm{d}n}{n}. $$
 
-La réfraction est donc proportionnelle à $P/T$ — exactement le facteur que l'on
-retrouve dans Tawqit :
+Comme $n$ reste très proche de $1$ ($n_0 - 1 \sim 3\times10^{-4}$), on a
+$\mathrm{d}n/n \approx \mathrm{d}n$ ; pour une atmosphère mince devant le rayon
+terrestre (couches quasi planes), $z$ varie peu sur le trajet et il reste
+
+$$ R \approx (n_0 - 1)\,\tan z, $$
+
+où $n_0$ est l'indice **au sol** : c'est la loi en $\tan z$ de Laplace.
+
+**3) Le lien avec la mécanique des fluides.** Deux relations ferment le problème :
+
+- **Gladstone-Dale** lie l'indice à la masse volumique : $n - 1 = k\,\rho$
+  ($k \approx 2{,}3\times10^{-4}\ \mathrm{m^3\,kg^{-1}}$ pour l'air) ;
+- l'air, **gaz parfait** en **équilibre hydrostatique**, a au sol
+  $\rho_0 = \dfrac{P}{R_s\,T}$ ($P$ pression, $T$ température absolue, $R_s$
+  constante spécifique de l'air).
+
+En combinant :
+
+$$ R \approx k\,\rho_0\,\tan z = \frac{k}{R_s}\,\frac{P}{T}\,\tan z. $$
+
+La réfraction est donc **proportionnelle à $P/T$** : un air froid et dense
+réfracte plus qu'un air chaud et raréfié. C'est exactement le facteur que l'on
+retrouve dans Tawqit, où la valeur **à l'horizon** ($z \to 90^\circ$ : la loi en
+$\tan z$ diverge et c'est la géométrie sphérique qui plafonne $R$ à ~$34'$)
+s'écrit
 
 $$ R \approx 0{,}569^\circ \times \frac{0{,}28\,P}{T + 273} $$
 
-($P$ en hPa, $T$ en °C), auquel s'ajoute l'**abaissement de l'horizon**
-$D = 0{,}0353\,\sqrt{h_{\text{alt}}}$ dû à l'altitude du lieu.
+($P$ en hPa, $T$ en °C), à laquelle s'ajoute l'**abaissement de l'horizon**
+$D = 0{,}0353\,\sqrt{h_{\text{alt}}}$ dû à l'altitude du lieu (en mètres).
 
 ## 2. L'effet à l'horizon
 
@@ -608,24 +637,37 @@ $$ h \approx -0{,}833^\circ = -\underbrace{34'}_{\text{réfraction}} - \underbra
 
 ## 3. Un impact très inégal selon la prière
 
-- **Maghrib & Chourūq** — le Soleil frôle l'horizon : la réfraction y est maximale
-  et **décale l'horaire de plusieurs minutes**.
+Le facteur décisif est la **hauteur du Soleil**. En faisant varier les conditions
+atmosphériques (pression, température) et l'altitude du lieu — donc la réfraction
+et l'abaissement d'horizon — on mesure leur effet sur chaque horaire au fil de
+l'année, à Roubaix ($50{,}7^\circ$ N) :
 
-![Décalage dû à la réfraction : Maghrib, Chourouq, Asr](/tawqit/refraction_impact_fr.png)
+<img src="/tawqit/refraction_maghrib_light.png" alt="Effet de la réfraction sur le Maghrib" class="only-light" />
+<img src="/tawqit/refraction_maghrib_dark.png" alt="Effet de la réfraction sur le Maghrib" class="only-dark" />
 
-*Décalage horaire dû à l'horizon corrigé (réfraction + demi-diamètre + parallaxe
-+ altitude), à Roubaix. Le *Maghrib* est **retardé** et le *Chourūq* **avancé** de
-plusieurs minutes ; l'*Asr*, Soleil bien plus haut, n'est quasiment pas affecté.*
+<img src="/tawqit/refraction_chourouq_light.png" alt="Effet de la réfraction sur le Chourouq" class="only-light" />
+<img src="/tawqit/refraction_chourouq_dark.png" alt="Effet de la réfraction sur le Chourouq" class="only-dark" />
 
+<img src="/tawqit/refraction_asr_light.png" alt="Effet de la réfraction sur l'Asr" class="only-light" />
+<img src="/tawqit/refraction_asr_dark.png" alt="Effet de la réfraction sur l'Asr" class="only-dark" />
+
+*Horaire calculé sans réfraction ($R=0$), en conditions standard ($1013$ hPa,
+$15$ °C), en air froid et dense ($1030$ hPa, $-15$ °C) et en altitude
+($2500$ m). Pour le *Maghrib* et le *Chourūq*, les courbes s'écartent de
+plusieurs minutes ; pour l'*ʿAṣr*, elles se **superposent**.*
+
+- **Maghrib & Chourūq** — le Soleil frôle l'horizon, où la réfraction est
+  maximale : pression, température et surtout altitude (abaissement d'horizon)
+  **décalent l'horaire de plusieurs minutes** — le *Maghrib* est retardé, le
+  *Chourūq* avancé.
 - **ʿAṣr** — le Soleil est bien plus haut ($13$–$33^\circ$) : la réfraction n'y
-  vaut que $1$–$4'$, un effet **faible** (Tawqit ne l'y applique d'ailleurs pas),
-  bien qu'il ait fait l'objet d'études dédiées.
+  vaut que $1$–$4'$ et **toutes les courbes se confondent** — l'effet est
+  négligeable (Tawqit ne l'y applique d'ailleurs pas).
 - **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
   etc.), ils intègrent déjà implicitement les conditions d'observation.
 
 En somme, la réfraction est **décisive au ras de l'horizon** (Maghrib, Chourūq) et
-**négligeable en hauteur** (Asr) — ce que traduit la décroissance rapide de la
-courbe ci-dessus.
+**négligeable en hauteur** (ʿAṣr).
 
 ---
 
