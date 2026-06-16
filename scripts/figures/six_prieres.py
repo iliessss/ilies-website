@@ -105,6 +105,6 @@ ax.set_yticks([0, 4, 8, 12, 16, 20, 24])
 ax.legend(loc="lower center", frameon=False, ncol=3,fontsize=60)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("six_prieres_dark.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("six_prieres_dark.pdf", dpi=36, bbox_inches="tight", transparent=True)
 
 plt.show()

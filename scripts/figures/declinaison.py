@@ -49,6 +49,6 @@ ax.set_ylabel(r"Déclinaison $\delta$")
 ax.set_xlim(0, 365)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("declinaison_white.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("declinaison_white.pdf", dpi=36, bbox_inches="tight", transparent=True)
 
 plt.show()

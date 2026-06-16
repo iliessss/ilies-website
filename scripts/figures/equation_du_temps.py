@@ -52,6 +52,6 @@ ax.set_ylabel(r"EoT")
 ax.set_xlim(0, 365)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("equation_du_temps_dark.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("equation_du_temps_dark.pdf", dpi=36, bbox_inches="tight", transparent=True)
 
 plt.show()

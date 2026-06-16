@@ -47,6 +47,6 @@ ax.set_xlabel(r"$x$")
 ax.set_ylabel(r"$f(x)$")
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("arccos_dark.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("arccos_dark.pdf", dpi=36, bbox_inches="tight", transparent=True)
 
 plt.show()

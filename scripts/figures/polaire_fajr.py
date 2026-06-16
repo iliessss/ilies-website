@@ -80,6 +80,6 @@ ax.legend(loc="upper center", frameon=False, fontsize=80,
           title=r"$\varphi$", title_fontsize=90)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("polaire_fajr_white.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("polaire_fajr_white.pdf", dpi=36, bbox_inches="tight", transparent=True)
 
 plt.show()
