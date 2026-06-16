@@ -90,17 +90,21 @@ for spine in ax.spines.values():
     spine.set_linewidth(10)
 ax.tick_params(axis='both', length=35, width=10)
 
-for nom, heures in prieres.items():
-    ax.plot(n_days, heures, label=nom)
+couleurs  = ["#ff0000", "#00ff00", "#01f8ec", "#c300ff", "#ffae00", "#aa6f22"]
+marqueurs = ["o", "s", "^", "D", "v", "P"]   # un marqueur distinct par prière
+
+for (nom, heures), col, mk in zip(prieres.items(), couleurs, marqueurs):
+    ax.plot(n_days, heures, color=col, label=nom,
+            marker=mk, markevery=30, markersize=38)
 
 ax.set_xlabel(r"Jours $J$")
 ax.set_ylabel(r"Heure locale")
 ax.set_xlim(0, 365)
 ax.set_ylim(0, 24)
 ax.set_yticks([0, 4, 8, 12, 16, 20, 24])
-ax.legend(loc="center left", bbox_to_anchor=(1.01, 0.5), frameon=False)
+ax.legend(loc="lower center", frameon=False, ncol=3,fontsize=60)
 
 # Pour enregistrer au lieu d'afficher :
-# fig.savefig("six_prieres_white.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("six_prieres_white.pdf", dpi=36, bbox_inches="tight")
 
 plt.show()
