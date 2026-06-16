@@ -436,7 +436,8 @@ et ne se lève pas de fin novembre à mi-janvier (nuit polaire). Plus la latitud
 monte, plus la période sans *Fajr* calculable s'allonge — d'où le recours au
 *Takdīr*.
 
-![Heure du Fajr selon la latitude](/tawqit/polaire_fajr_fr.png)
+<img src="/tawqit/polaire_fajr_light.png" alt="Heure du Fajr selon la latitude" class="only-light" />
+<img src="/tawqit/polaire_fajr_dark.png" alt="Heure du Fajr selon la latitude" class="only-dark" />
 
 *Heure du *Fajr* ($18^\circ$) au fil de l'année, à longitude fixe, pour plusieurs
 latitudes. À $45^\circ$ N elle reste continue ; mais dès ~$55^\circ$ N la courbe

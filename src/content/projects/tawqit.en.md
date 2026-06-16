@@ -420,7 +420,8 @@ does not rise from late November to mid-January (polar night). The higher the
 latitude, the longer the period with no computable *Fajr* — hence the recourse to
 *Takdīr*.
 
-![Fajr time by latitude](/tawqit/polaire_fajr_en.png)
+<img src="/tawqit/polaire_fajr_light.png" alt="Fajr time by latitude" class="only-light" />
+<img src="/tawqit/polaire_fajr_dark.png" alt="Fajr time by latitude" class="only-dark" />
 
 *Fajr time ($18^\circ$) over the year, at fixed longitude, for several latitudes.
 At $45^\circ$ N it stays continuous; but from ~$55^\circ$ N the curve breaks off in

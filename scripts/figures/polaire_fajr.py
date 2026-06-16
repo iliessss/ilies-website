@@ -15,12 +15,12 @@ Lancer :  python3 polaire_fajr.py
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('dark_background')
+#plt.style.use('dark_background')
 
 # ───────────────────── Réglages ─────────────────────
 LON, TZ    = 15.0, 1.0       # longitude (°E) et fuseau (h), sans DST
 FAJR_ANGLE = -18.0           # altitude du Soleil au Fajr
-LATITUDES  = [45.0, 55.0, 60.0, 66.56, 69.0]   # du sud au cercle polaire et au-delà
+LATITUDES  = [45.0, 48.0, 55.0, 60.0, 66.56, 69.0]   # du sud au cercle polaire et au-delà
 
 # ───────────────────── Astronomie ─────────────────────
 def sun(JD):
@@ -64,7 +64,7 @@ for spine in ax.spines.values():
     spine.set_linewidth(10)
 ax.tick_params(axis='both', length=35, width=10)
 
-couleurs  = ["#01f8ec", "#00ff00", "#ffae00", "#ff0000", "#c300ff"]
+couleurs  = ["#01f8ec", "#00ff00", "#8d2e86", "#ffae00", "#ff0000", "#c300ff"]
 marqueurs = ["o", "s", "^", "D", "v"]
 
 for lat, col, mk in zip(LATITUDES, couleurs, marqueurs):
@@ -73,13 +73,13 @@ for lat, col, mk in zip(LATITUDES, couleurs, marqueurs):
             marker=mk, markevery=30, markersize=38, markerfacecolor='none', markeredgewidth=8)
 
 ax.set_xlabel(r"Jours $J$")
-ax.set_ylabel(r"Fajr (heure locale)")
+ax.set_ylabel(r"Fajr")
 ax.set_xlim(0, 365)
 ax.set_ylim(0, 9)
-ax.legend(loc="upper right", frameon=False, fontsize=80,
+ax.legend(loc="upper center", frameon=False, fontsize=80,
           title=r"$\varphi$", title_fontsize=90)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("polaire_fajr_dark.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("polaire_fajr_white.pdf", dpi=36, bbox_inches="tight")
 
 plt.show()
