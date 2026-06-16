@@ -653,8 +653,28 @@ is **unaffected** — the five curves overlap.*
 - **Fajr & ʿIshāʾ** — defined by a chosen **depression angle** ($18^\circ$, etc.),
   they already implicitly fold in the observation conditions.
 
+A **dedicated study** (Özlem, 2016) does nonetheless propose a refraction
+correction for *ʿAṣr*. The shadow is cast by the **apparent** Sun (raised by
+refraction), hence shorter than that of the true Sun. One corrects by computing
+the angle in the apparent frame, then converting back to the true altitude:
+
+$$
+\begin{aligned}
+Z   &= 90^\circ - |\varphi - \delta| && \text{(true noon altitude)}\\
+Z'  &= Z + 0.017\,\cot\!\Big(Z + \tfrac{10.3^\circ}{Z + 5.11^\circ}\Big) && \text{(apparent, Sæmundsson)}\\
+A'  &= \operatorname{arccot}\!\big(\cot Z' + t\big) && \text{(apparent ʿAṣr angle)}\\
+C   &= A' - \tfrac{1}{60}\cot\!\Big(A' + \tfrac{7.31^\circ}{A' + 4.4^\circ}\Big) && \text{(corrected true angle, Bennett)}
+\end{aligned}
+$$
+
+The corrected angle $C$ is then fed into the hour-angle formula in place of
+$h_{\text{ʿAṣr}}$. Since the apparent shadow is shorter, the true *ʿAṣr* angle is
+slightly smaller and the prayer falls **a little later**. The drift stays of order
+a few **seconds** (≈ $30$–$45$ s at $50^\circ$ in winter, $1$–$2$ min near
+$60^\circ$) — hence its omission from most calculations.
+
 In short, refraction is **decisive at the horizon** (Maghrib, Shurūq) and
-**negligible high up** (ʿAṣr).
+**marginal high up** (ʿAṣr, a few seconds).
 
 ---
 
@@ -685,5 +705,6 @@ code, the work of the *muwaqqitūn*: translating the signs of the sky into times
 - *Definition & Calculation of Prayer Timings* (refraction and dawn signs).
 - *Prayer Times Calculation* (prayer-time calculation conventions).
 - G. G. Bennett, "The Calculation of Astronomical Refraction in Marine Navigation", *Journal of Navigation*, **35** (1982).
+- A. Özlem, "Impact of Atmospheric Refraction on Asr Time" (2016) — refraction correction for ʿAṣr.
 - J. Meeus, *Astronomical Algorithms*, Willmann-Bell, 1998.
 - W. M. Smart, *Textbook on Spherical Astronomy*, Cambridge University Press.

@@ -675,8 +675,29 @@ par l'horizon, n'est **pas affecté** — les cinq courbes se superposent.*
 - **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
   etc.), ils intègrent déjà implicitement les conditions d'observation.
 
+Une **étude dédiée** (Özlem, 2016) propose tout de même une correction de
+réfraction pour le ʿAṣr. L'ombre est projetée par le Soleil **apparent** (rehaussé
+par la réfraction), donc plus courte que celle du Soleil vrai. On corrige en
+calculant l'angle dans le repère apparent, puis en reconvertissant en altitude
+vraie :
+
+$$
+\begin{aligned}
+Z   &= 90^\circ - |\varphi - \delta| && \text{(hauteur vraie au midi)}\\
+Z'  &= Z + 0{,}017\,\cot\!\Big(Z + \tfrac{10{,}3^\circ}{Z + 5{,}11^\circ}\Big) && \text{(apparente, Sæmundsson)}\\
+A'  &= \operatorname{arccot}\!\big(\cot Z' + t\big) && \text{(angle ʿAṣr apparent)}\\
+C   &= A' - \tfrac{1}{60}\cot\!\Big(A' + \tfrac{7{,}31^\circ}{A' + 4{,}4^\circ}\Big) && \text{(angle vrai corrigé, Bennett)}
+\end{aligned}
+$$
+
+L'angle corrigé $C$ est ensuite injecté dans la formule de l'angle horaire à la
+place de $h_{\text{ʿAṣr}}$. Comme l'ombre apparente est plus courte, le vrai angle
+du ʿAṣr est légèrement plus petit : la prière tombe **un peu plus tard**. Le
+décalage reste de l'ordre de quelques **secondes** (≈ $30$–$45$ s à $50^\circ$ en
+hiver, $1$–$2$ min vers $60^\circ$) — d'où son omission dans la plupart des calculs.
+
 En somme, la réfraction est **décisive au ras de l'horizon** (Maghrib, Chourouq) et
-**négligeable en hauteur** (ʿAṣr).
+**marginale en hauteur** (ʿAṣr, quelques secondes).
 
 ---
 
@@ -707,5 +728,6 @@ réglable et des ajustements manuels — reprenant, en code, le geste des
 - *Definition & Calculation of Prayer Timings* (réfraction et signes du fajr).
 - *Prayer Times Calculation* (conventions de calcul des heures de prière).
 - G. G. Bennett, « The Calculation of Astronomical Refraction in Marine Navigation », *Journal of Navigation*, **35** (1982).
+- A. Özlem, « Impact of Atmospheric Refraction on Asr Time » (2016) — correction de réfraction pour le ʿAṣr.
 - J. Meeus, *Astronomical Algorithms*, Willmann-Bell, 1998.
 - W. M. Smart, *Textbook on Spherical Astronomy*, Cambridge University Press.
