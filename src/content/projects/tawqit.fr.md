@@ -458,7 +458,8 @@ l'angle est profond, plus on est avancé dans la nuit. Tout le débat porte donc
 *quel* angle correspond au vrai signe — la blancheur du *Fajr*, la disparition du
 crépuscule de l'*ʿIshāʾ*.
 
-![Angle de dépression solaire : 12°, 15°, 18°](/tawqit/angle_depression_fr.png)
+<img src="/tawqit/angle_depression_light.png" alt="Angle de dépression solaire : 12°, 15°, 18°" class="only-light" />
+<img src="/tawqit/angle_depression_dark.png" alt="Angle de dépression solaire : 12°, 15°, 18°" class="only-dark" />
 
 *L'angle de dépression à l'Est (*Fajr*) et à l'Ouest (*ʿIshāʾ*). Le vrai signe est
 à $18^\circ$ (ciel réellement noir) ; à $12^\circ$ et $15^\circ$ le Soleil est trop

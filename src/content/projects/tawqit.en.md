@@ -442,7 +442,8 @@ angle, the further into the night. The whole debate is therefore about *which*
 angle matches the true sign — the whiteness of *Fajr*, the fading of the *ʿIshāʾ*
 twilight.
 
-![Solar depression angle: 12°, 15°, 18°](/tawqit/angle_depression_en.png)
+<img src="/tawqit/angle_depression_light.png" alt="Solar depression angle: 12°, 15°, 18°" class="only-light" />
+<img src="/tawqit/angle_depression_dark.png" alt="Solar depression angle: 12°, 15°, 18°" class="only-dark" />
 
 *The depression angle in the East (*Fajr*) and West (*ʿIshāʾ*). The true sign is at
 $18^\circ$ (truly dark sky); at $12^\circ$ and $15^\circ$ the Sun is too close to
