@@ -176,6 +176,13 @@ Le calcul en un point du globe repose sur trois grandeurs :
   jour, oscillant entre $+23^\circ 26'$ (solstice d'été) et $-23^\circ 26'$
   (solstice d'hiver).
 
+![Déclinaison solaire au fil de l'année](/tawqit/declinaison_fr.png)
+
+*La déclinaison $\delta$ varie de façon quasi sinusoïdale sur l'année : nulle aux
+équinoxes, maximale au solstice d'été ($+23{,}44^\circ$), minimale au solstice
+d'hiver ($-23{,}44^\circ$). C'est elle qui commande la hauteur du Soleil et la
+durée du jour. (Tracé avec les formules de* `prayer_calculator.dart`*.)*
+
 ## 2. La mesure du temps et l'équation du temps
 
 Le temps de nos montres ne suit pas exactement le Soleil. On distingue :
@@ -188,6 +195,13 @@ Le temps de nos montres ne suit pas exactement le Soleil. On distingue :
 - **L'équation du temps** $E$ — l'écart (en minutes) entre les deux, dû à
   l'**excentricité** de l'orbite et à l'**obliquité** de l'écliptique. C'est elle
   qui corrige le passage du Soleil réel vers l'heure de nos montres.
+
+![Équation du temps au fil de l'année](/tawqit/equation_du_temps_fr.png)
+
+*L'équation du temps $E$ : l'écart (en minutes) entre le midi solaire vrai et le
+midi moyen, qui oscille d'environ $-14$ à $+16$ min. Sa forme à deux bosses
+résulte de la combinaison de l'excentricité de l'orbite et de l'obliquité de
+l'écliptique.*
 
 ## 3. L'astronomie sphérique et la formule de l'angle horaire
 
@@ -217,20 +231,19 @@ $$
 (TZ = décalage du fuseau en heures, $\lambda$ comptée positive vers l'Est, $E$ en
 minutes).
 
-## 4. L'influence de la réfraction atmosphérique
+Cette équation n'a de solution que si $\cos H \in [-1, 1]$. Quand $|\cos H| > 1$,
+le Soleil n'atteint **jamais** l'altitude visée : c'est le **jour (ou la nuit)
+polaire**, où la prière n'a pas d'heure calculable — l'application bascule alors
+sur le *Takdīr* (estimation).
 
-Le calcul ne peut rester purement géométrique : l'atmosphère **dévie** les rayons
-et fait paraître le Soleil plus haut qu'il ne l'est. Pour le lever (*Chourūq*) et
-le coucher (*Maghrib*), on prend donc une altitude de
+![cos H pour le Fajr selon la latitude](/tawqit/cosH_polaire_fr.png)
 
-$$
-h \approx -0{,}833^\circ = -\underbrace{34'}_{\text{réfraction}} - \underbrace{16'}_{\text{demi-diamètre}}
-$$
+*$\cos H$ pour le Fajr ($-18^\circ$) selon la latitude. À $48^\circ$ N, la courbe
+reste dans la bande $[-1,1]$ : le Fajr est toujours défini. Mais dès ~$55^\circ$ N,
+elle plonge sous $-1$ en été — le Soleil ne descend jamais à $18^\circ$ sous
+l'horizon : c'est le jour polaire, sans Fajr calculable.*
 
-au lieu de $0^\circ$ — garantissant que le *Maghrib* n'est pas annoncé avant la
-disparition physique totale du disque.
-
-## 5. Comment Tawqit le calcule
+## 4. Comment Tawqit le calcule
 
 L'application applique ces principes pas à pas. D'abord la **position du Soleil**
 au jour julien $\mathrm{JD}$, par les formules de basse précision de
@@ -259,8 +272,7 @@ altitude $h$ :
 
 Enfin, deux minutes de précaution sont ajoutées au *Maghrib*, et aux très hautes
 latitudes — lorsque l'angle n'est jamais atteint — l'application bascule sur les
-règles de *Takdīr* (ville la plus proche, division de la nuit) que nous
-détaillerons.
+règles de *Takdīr* (ville la plus proche, division de la nuit).
 
 ---
 
@@ -356,6 +368,81 @@ l'***imsāk*** (cessation de manger), qu'il faut par précaution **avancer**, et
 les deux à la fois, al-ʿAlamī conclut qu'il faut **avancer l'*imsāk*** — s'arrêter
 quand on est sûr d'être encore dans la nuit — **et retarder la prière** — prier
 quand on est sûr que le jour est entré.
+
+---
+
+# IV. La réfraction atmosphérique
+
+Au-delà des angles de dépression, une **correction physique** s'impose à tous les
+horaires liés à l'horizon : la lumière du Soleil ne nous parvient pas en ligne
+droite. C'est la **réfraction atmosphérique**.
+
+## 1. Pourquoi l'atmosphère courbe la lumière
+
+L'atmosphère est un **fluide stratifié** : l'air est plus dense en bas qu'en
+haut. Or l'indice de réfraction $n$ croît avec la densité ; un rayon traversant
+des couches de moins en moins denses se **courbe** vers le sol. En géométrie
+sphérique stratifiée, la loi de Snell-Descartes donne l'**invariant de
+réfraction** :
+
+$$ n(r)\, r\, \sin z = \text{const} $$
+
+($z$ = distance zénithale, $r$ = distance au centre de la Terre).
+
+Le lien avec la **mécanique des fluides** est direct. L'indice est lié à la masse
+volumique $\rho$ de l'air par la relation de Gladstone-Dale, $n - 1 \approx
+k\,\rho$ ; et l'air, en **équilibre hydrostatique** et assimilé à un gaz parfait,
+vérifie
+
+$$ \rho = \frac{P}{R_s\,T} $$
+
+La réfraction est donc proportionnelle à $P/T$ — exactement le facteur que l'on
+retrouve dans Tawqit :
+
+$$ R \approx 0{,}569^\circ \times \frac{0{,}28\,P}{T + 273} $$
+
+($P$ en hPa, $T$ en °C), auquel s'ajoute l'**abaissement de l'horizon**
+$D = 0{,}0353\,\sqrt{h_{\text{alt}}}$ dû à l'altitude du lieu.
+
+## 2. L'effet à l'horizon
+
+La réfraction est **maximale à l'horizon** (~$34'$) et décroît très vite avec la
+hauteur du Soleil :
+
+![Réfraction en fonction de l'altitude du Soleil](/tawqit/refraction_altitude_fr.png)
+
+*La réfraction $R$ en fonction de l'altitude vraie du Soleil (formule de Bennett,
+1982). À l'horizon ($h \approx 0$), elle atteint ~$34'$ ; à l'altitude de l'Asr
+($13$–$33^\circ$), elle tombe à $1$–$4'$.*
+
+C'est pourquoi le coucher « légal » n'est pas pris au centre géométrique ($h = 0$)
+mais à
+
+$$ h \approx -0{,}833^\circ = -\underbrace{34'}_{\text{réfraction}} - \underbrace{16'}_{\text{demi-diamètre}} $$
+
+— garantissant que le *Maghrib* n'est annoncé qu'après la disparition
+**physique** complète du disque.
+
+## 3. Un impact très inégal selon la prière
+
+- **Maghrib & Chourūq** — le Soleil frôle l'horizon : la réfraction y est maximale
+  et **décale l'horaire de plusieurs minutes**.
+
+![Retard du Maghrib dû à la réfraction](/tawqit/refraction_impact_fr.png)
+
+*Le retard du Maghrib (à Roubaix) dû à l'horizon corrigé — réfraction,
+demi-diamètre, parallaxe et abaissement d'altitude. L'effet, de l'ordre de
+plusieurs minutes, varie sur l'année avec la déclinaison.*
+
+- **ʿAṣr** — le Soleil est bien plus haut ($13$–$33^\circ$) : la réfraction n'y
+  vaut que $1$–$4'$, un effet **faible** (Tawqit ne l'y applique d'ailleurs pas),
+  bien qu'il ait fait l'objet d'études dédiées.
+- **Fajr & ʿIshāʾ** — définis par un **angle de dépression** choisi ($18^\circ$,
+  etc.), ils intègrent déjà implicitement les conditions d'observation.
+
+En somme, la réfraction est **décisive au ras de l'horizon** (Maghrib, Chourūq) et
+**négligeable en hauteur** (Asr) — ce que traduit la décroissance rapide de la
+courbe ci-dessus.
 
 ---
 

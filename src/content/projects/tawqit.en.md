@@ -169,6 +169,13 @@ Computing times at a point on the globe rests on three quantities:
   plane. Owing to the tilt of the Earth's axis, it varies daily, oscillating
   between $+23^\circ 26'$ (summer solstice) and $-23^\circ 26'$ (winter solstice).
 
+![Solar declination over the year](/tawqit/declinaison_en.png)
+
+*The declination $\delta$ varies almost sinusoidally over the year: zero at the
+equinoxes, maximal at the summer solstice ($+23.44^\circ$), minimal at the winter
+solstice ($-23.44^\circ$). It governs the Sun's altitude and the length of the
+day. (Plotted with the formulas of* `prayer_calculator.dart`*.)*
+
 ## 2. Timekeeping and the equation of time
 
 Our clocks do not exactly follow the Sun. We distinguish:
@@ -179,6 +186,12 @@ Our clocks do not exactly follow the Sun. We distinguish:
 - **The equation of time** $E$ — the gap (in minutes) between the two, due to the
   **eccentricity** of the orbit and the **obliquity** of the ecliptic. It corrects
   the passage from the real Sun to our clock time.
+
+![Equation of time over the year](/tawqit/equation_du_temps_en.png)
+
+*The equation of time $E$: the gap (in minutes) between true and mean solar noon,
+oscillating from about $-14$ to $+16$ min. Its two-humped shape results from
+combining the orbit's eccentricity and the obliquity of the ecliptic.*
 
 ## 3. Spherical astronomy and the hour-angle formula
 
@@ -208,20 +221,19 @@ $$
 (TZ = time-zone offset in hours, $\lambda$ taken positive eastward, $E$ in
 minutes).
 
-## 4. The effect of atmospheric refraction
+This equation has a solution only if $\cos H \in [-1, 1]$. When $|\cos H| > 1$,
+the Sun **never** reaches the target altitude: this is the **polar day (or
+night)**, where the prayer has no computable time — the app then switches to
+*Takdīr* (estimation).
 
-The computation cannot stay purely geometric: the atmosphere **bends** the rays
-and makes the Sun appear higher than it is. For sunrise (*Shurūq*) and sunset
-(*Maghrib*), one therefore uses an altitude of
+![cos H for Fajr by latitude](/tawqit/cosH_polaire_en.png)
 
-$$
-h \approx -0.833^\circ = -\underbrace{34'}_{\text{refraction}} - \underbrace{16'}_{\text{semi-diameter}}
-$$
+*$\cos H$ for Fajr ($-18^\circ$) by latitude. At $48^\circ$ N the curve stays
+within $[-1,1]$: Fajr is always defined. But from ~$55^\circ$ N it dips below
+$-1$ in summer — the Sun never descends to $18^\circ$ below the horizon: that is
+the polar day, with no computable Fajr.*
 
-instead of $0^\circ$ — ensuring *Maghrib* is not announced before the disk has
-physically and fully disappeared.
-
-## 5. How Tawqit computes it
+## 4. How Tawqit computes it
 
 The app applies these principles step by step. First the **Sun's position** at
 Julian Day $\mathrm{JD}$, via the low-precision formulas of the *Astronomical
@@ -249,7 +261,7 @@ Each prayer then follows from the master formula, feeding in its altitude $h$:
 
 Finally, two precautionary minutes are added to *Maghrib*, and at very high
 latitudes — when the angle is never reached — the app switches to the *Takdīr*
-rules (nearest city, division of the night) detailed later.
+rules (nearest city, division of the night).
 
 ---
 
@@ -342,6 +354,77 @@ the **prayer**, which precaution requires to **delay**. Unable to be cautious on
 both at once, al-ʿAlamī concludes that one should **advance the *imsāk*** — stop
 when one is sure it is still night — **and delay the prayer** — pray when one is
 sure day has come.
+
+---
+
+# IV. Atmospheric refraction
+
+Beyond the depression angles, a **physical correction** applies to every
+horizon-related time: the Sun's light does not reach us in a straight line. This
+is **atmospheric refraction**.
+
+## 1. Why the atmosphere bends light
+
+The atmosphere is a **stratified fluid**: air is denser below than above. The
+refractive index $n$ increases with density, so a ray crossing ever-thinner
+layers **bends** toward the ground. In spherically stratified geometry,
+Snell's law gives the **refraction invariant**:
+
+$$ n(r)\, r\, \sin z = \text{const} $$
+
+($z$ = zenith distance, $r$ = distance to the Earth's center).
+
+The link with **fluid mechanics** is direct. The index relates to the air density
+$\rho$ through the Gladstone-Dale relation, $n - 1 \approx k\,\rho$; and air, in
+**hydrostatic equilibrium** and treated as an ideal gas, satisfies
+
+$$ \rho = \frac{P}{R_s\,T} $$
+
+Refraction is therefore proportional to $P/T$ — exactly the factor found in
+Tawqit:
+
+$$ R \approx 0.569^\circ \times \frac{0.28\,P}{T + 273} $$
+
+($P$ in hPa, $T$ in °C), to which the **horizon dip** $D = 0.0353\,\sqrt{h_{\text{alt}}}$
+(from the site's altitude) is added.
+
+## 2. The effect at the horizon
+
+Refraction is **maximal at the horizon** (~$34'$) and decreases very quickly with
+the Sun's altitude:
+
+![Refraction versus the Sun's altitude](/tawqit/refraction_altitude_en.png)
+
+*Refraction $R$ versus the Sun's true altitude (Bennett's formula, 1982). At the
+horizon ($h \approx 0$) it reaches ~$34'$; at the Asr altitude ($13$–$33^\circ$)
+it drops to $1$–$4'$.*
+
+This is why "legal" sunset is not taken at the geometric center ($h = 0$) but at
+
+$$ h \approx -0.833^\circ = -\underbrace{34'}_{\text{refraction}} - \underbrace{16'}_{\text{semi-diameter}} $$
+
+— ensuring *Maghrib* is announced only after the disk has **physically** and
+fully disappeared.
+
+## 3. A very uneven impact across prayers
+
+- **Maghrib & Shurūq** — the Sun grazes the horizon: refraction is maximal and
+  **shifts the time by several minutes**.
+
+![Maghrib delay from refraction](/tawqit/refraction_impact_en.png)
+
+*The Maghrib delay (at Roubaix) from the corrected horizon — refraction,
+semi-diameter, parallax and altitude dip. The effect, of order several minutes,
+varies over the year with the declination.*
+
+- **ʿAṣr** — the Sun is much higher ($13$–$33^\circ$): refraction is only
+  $1$–$4'$, a **small** effect (Tawqit does not even apply it there), though it
+  has been the subject of dedicated studies.
+- **Fajr & ʿIshāʾ** — defined by a chosen **depression angle** ($18^\circ$, etc.),
+  they already implicitly fold in the observation conditions.
+
+In short, refraction is **decisive at the horizon** (Maghrib, Shurūq) and
+**negligible high up** (Asr) — as the rapid decay of the curve above shows.
 
 ---
 
