@@ -384,9 +384,8 @@ $$t_{\text{Fajr}} = t_{\text{Ḏuhr}} - \frac{H(-18^\circ)}{15}.$$
 **Chourūq** (lever) — le bord supérieur du Soleil touche l'horizon, $h = h_0$ :
 $$t_{\text{Chourūq}} = t_{\text{Ḏuhr}} - \frac{H(h_0)}{15}.$$
 
-**ʿAṣr** — l'altitude est fixée par la longueur de l'ombre :
-$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\quad t = 1\ (\text{majorité}),\ 2\ (\text{ḥanafite}),\qquad
-t_{\text{ʿAṣr}} = t_{\text{Ḏuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
+**ʿAṣr** — l'altitude est fixée par la longueur de l'ombre, $t = 1$ (majorité) ou $2$ (ḥanafite) :
+$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\qquad t_{\text{ʿAṣr}} = t_{\text{Ḏuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
 
 **Maghrib** (coucher) — bord supérieur à l'horizon, $h = h_0$, plus deux minutes de précaution :
 $$t_{\text{Maghrib}} = t_{\text{Ḏuhr}} + \frac{H(h_0)}{15} + \frac{2}{60}.$$

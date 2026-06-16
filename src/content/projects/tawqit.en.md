@@ -371,9 +371,8 @@ $$t_{\text{Fajr}} = t_{\text{Ẓuhr}} - \frac{H(-18^\circ)}{15}.$$
 **Shurūq** (sunrise) — the Sun's upper limb touches the horizon, $h = h_0$:
 $$t_{\text{Shurūq}} = t_{\text{Ẓuhr}} - \frac{H(h_0)}{15}.$$
 
-**ʿAṣr** — the altitude is set by the shadow length:
-$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\quad t = 1\ (\text{majority}),\ 2\ (\text{Hanafi}),\qquad
-t_{\text{ʿAṣr}} = t_{\text{Ẓuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
+**ʿAṣr** — the altitude is set by the shadow length, $t = 1$ (majority) or $2$ (Hanafi):
+$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\qquad t_{\text{ʿAṣr}} = t_{\text{Ẓuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
 
 **Maghrib** (sunset) — upper limb at the horizon, $h = h_0$, plus two precautionary minutes:
 $$t_{\text{Maghrib}} = t_{\text{Ẓuhr}} + \frac{H(h_0)}{15} + \frac{2}{60}.$$
