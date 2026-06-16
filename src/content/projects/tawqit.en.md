@@ -262,12 +262,52 @@ the first two terms reflecting the obliquity, the last the eccentricity.
 ## 3. Spherical astronomy and the hour-angle formula
 
 The engine of the computation is **spherical trigonometry**, applied to the
-astronomical triangle linking the celestial pole $P$, the observer's zenith $Z$
-and the Sun. The master formula gives the **hour angle** $H$ at which the Sun
-reaches a given altitude $h$:
+*astronomical triangle* linking the celestial pole $P$, the observer's zenith $Z$
+and the Sun $S$.
+
+<img src="/tawqit/triangle_spherique_light.png" alt="Spherical triangle Pole–Zenith–Sun" class="only-light" />
+<img src="/tawqit/triangle_spherique_dark.png" alt="Spherical triangle Pole–Zenith–Sun" class="only-dark" />
+
+*The astronomical triangle $PZS$ drawn on the celestial sphere. Its three sides
+are great-circle arcs; the angle at the pole $P$ is the hour angle $H$ we seek.*
+
+The three sides of this triangle are great-circle arcs whose lengths (in degrees)
+read off directly from the coordinates:
+
+$$
+\widehat{PZ} = 90^\circ - \varphi, \qquad
+\widehat{PS} = 90^\circ - \delta, \qquad
+\widehat{ZS} = 90^\circ - h,
+$$
+
+where $\varphi$ is the latitude, $\delta$ the Sun's declination (§1) and $h$ its
+altitude above the horizon. The angle at vertex $P$, between the meridian
+direction ($PZ$) and the Sun's direction ($PS$), is precisely the **hour angle**
+$H$ we are after.
+
+The **spherical law of cosines** relates one side of a spherical triangle to the
+other two and the angle they enclose. Applied to side $\widehat{ZS}$, which is
+opposite vertex $P$:
+
+$$
+\cos\widehat{ZS} = \cos\widehat{PZ}\,\cos\widehat{PS}
+                 + \sin\widehat{PZ}\,\sin\widehat{PS}\,\cos H.
+$$
+
+Substituting the three arcs and using the identities $\cos(90^\circ - x) = \sin x$
+and $\sin(90^\circ - x) = \cos x$ gives:
+
+$$
+\sin h = \sin\varphi\,\sin\delta + \cos\varphi\,\cos\delta\,\cos H.
+$$
+
+It only remains to isolate $\cos H$ to obtain the **master formula**, which gives
+the hour angle at which the Sun reaches a fixed altitude $h$:
 
 $$
 \cos H = \frac{\sin h - \sin\varphi\,\sin\delta}{\cos\varphi\,\cos\delta}
+\quad\Longrightarrow\quad
+H = \arccos\!\left(\frac{\sin h - \sin\varphi\,\sin\delta}{\cos\varphi\,\cos\delta}\right)
 $$
 
 where $h$ is the Sun's altitude (negative below the horizon, for *Fajr* and
@@ -317,21 +357,39 @@ g &= 357.528 + 0.985\,600\,3\,n \pmod{360} && \text{(mean anomaly)}\\
 $$
 
 with $\alpha = \operatorname{atan2}(\cos\varepsilon\sin\lambda,\ \cos\lambda)$.
-Each prayer then follows from the master formula, feeding in its altitude $h$:
+Each prayer then follows by feeding its altitude $h$ into the hour angle
+$H(h) = \arccos\!\big[(\sin h - \sin\varphi\sin\delta)/(\cos\varphi\cos\delta)\big]$
+and converting to time around solar noon. The six times each have an explicit
+formula:
 
-- **Shurūq / Maghrib**: $h \approx -0.833^\circ$, but Tawqit **refines the
-  horizon** by adding refraction (from pressure and temperature), the solar
-  semi-diameter, parallax and the **horizon dip** due to the site's altitude — the
-  *Tamkīn* turned into equations.
-- **Fajr / ʿIshāʾ**: $h = -\alpha$, where $\alpha$ is the chosen depression angle.
-- **ʿAṣr**: the altitude is set by the shadow length,
-  $$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\qquad t = 1\ (\text{majority}),\ t = 2\ (\text{Hanafi}).$$
+**Ẓuhr** — the Sun crosses the meridian ($H = 0$), the pivot of the day:
+$$t_{\text{Ẓuhr}} = 12 + \mathrm{TZ} - \frac{\lambda}{15} - \frac{E}{60}.$$
 
-Finally, two precautionary minutes are added to *Maghrib*, and at very high
-latitudes — when the angle is never reached — the app switches to the *Takdīr*
+**Fajr** — astronomical dawn, the Sun $h = -18^\circ$ below the horizon:
+$$t_{\text{Fajr}} = t_{\text{Ẓuhr}} - \frac{H(-18^\circ)}{15}.$$
+
+**Shurūq** (sunrise) — the Sun's upper limb touches the horizon, $h = h_0$:
+$$t_{\text{Shurūq}} = t_{\text{Ẓuhr}} - \frac{H(h_0)}{15}.$$
+
+**ʿAṣr** — the altitude is set by the shadow length:
+$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\quad t = 1\ (\text{majority}),\ 2\ (\text{Hanafi}),\qquad
+t_{\text{ʿAṣr}} = t_{\text{Ẓuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
+
+**Maghrib** (sunset) — upper limb at the horizon, $h = h_0$, plus two precautionary minutes:
+$$t_{\text{Maghrib}} = t_{\text{Ẓuhr}} + \frac{H(h_0)}{15} + \frac{2}{60}.$$
+
+**ʿIshāʾ** — astronomical twilight, the Sun again at $h = -18^\circ$:
+$$t_{\text{ʿIshāʾ}} = t_{\text{Ẓuhr}} + \frac{H(-18^\circ)}{15}.$$
+
+For **sunrise** and **sunset**, Tawqit does not stop at $h = 0$: it **refines the
+horizon** to $h_0 \approx -0.833^\circ$ by combining atmospheric refraction (from
+pressure and temperature), the solar semi-diameter, parallax and the **horizon
+dip** due to the site's altitude — the *Tamkīn* turned into equations. At very
+high latitudes, when the angle is never reached, the app switches to the *Takdīr*
 rules (nearest city, division of the night).
 
-![The six daily times over the year at Makkah](/tawqit/prieres_makkah_en.png)
+<img src="/tawqit/six_prieres_light.png" alt="The six daily times over the year at Makkah" class="only-light" />
+<img src="/tawqit/six_prieres_dark.png" alt="The six daily times over the year at Makkah" class="only-dark" />
 
 *The six times computed day by day at Makkah (UTC+3, no daylight saving). *Dhuhr*
 barely moves (equation of time); *Fajr*/sunrise and *Maghrib*/*ʿIshāʾ* drift from

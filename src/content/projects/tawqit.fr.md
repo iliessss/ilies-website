@@ -274,13 +274,53 @@ les deux premiers termes traduisant l'obliquité, le dernier l'excentricité.
 
 ## 3. L'astronomie sphérique et la formule de l'angle horaire
 
-Le moteur du calcul est la **trigonométrie sphérique**, appliquée au triangle
-astronomique reliant le pôle céleste $P$, le zénith de l'observateur $Z$ et le
-Soleil. La formule maîtresse donne l'**angle horaire** $H$ auquel le Soleil
-atteint une altitude $h$ donnée :
+Le moteur du calcul est la **trigonométrie sphérique**, appliquée au *triangle
+astronomique* qui relie le pôle céleste $P$, le zénith de l'observateur $Z$ et le
+Soleil $S$.
+
+<img src="/tawqit/triangle_spherique_light.png" alt="Triangle sphérique Pôle–Zénith–Soleil" class="only-light" />
+<img src="/tawqit/triangle_spherique_dark.png" alt="Triangle sphérique Pôle–Zénith–Soleil" class="only-dark" />
+
+*Le triangle astronomique $PZS$ tracé sur la sphère céleste. Ses trois côtés sont
+des arcs de grand cercle ; l'angle au pôle $P$ est l'angle horaire $H$ recherché.*
+
+Les trois côtés de ce triangle sont des arcs de grand cercle dont les longueurs
+(en degrés) se lisent directement sur les coordonnées :
+
+$$
+\widehat{PZ} = 90^\circ - \varphi, \qquad
+\widehat{PS} = 90^\circ - \delta, \qquad
+\widehat{ZS} = 90^\circ - h,
+$$
+
+où $\varphi$ est la latitude du lieu, $\delta$ la déclinaison du Soleil (§1) et
+$h$ son altitude au-dessus de l'horizon. L'angle au sommet $P$, formé entre la
+direction du méridien ($PZ$) et celle du Soleil ($PS$), est précisément
+l'**angle horaire** $H$ que l'on cherche.
+
+La **loi des cosinus sphérique** relie un côté d'un triangle sphérique aux deux
+autres et à l'angle qu'ils enserrent. Appliquée au côté $\widehat{ZS}$, qui est
+opposé au sommet $P$ :
+
+$$
+\cos\widehat{ZS} = \cos\widehat{PZ}\,\cos\widehat{PS}
+                 + \sin\widehat{PZ}\,\sin\widehat{PS}\,\cos H.
+$$
+
+En y substituant les trois arcs et en utilisant les identités
+$\cos(90^\circ - x) = \sin x$ et $\sin(90^\circ - x) = \cos x$, il vient :
+
+$$
+\sin h = \sin\varphi\,\sin\delta + \cos\varphi\,\cos\delta\,\cos H.
+$$
+
+Il ne reste qu'à isoler $\cos H$ pour obtenir la **formule maîtresse**, qui donne
+l'angle horaire auquel le Soleil atteint une altitude $h$ fixée :
 
 $$
 \cos H = \frac{\sin h - \sin\varphi\,\sin\delta}{\cos\varphi\,\cos\delta}
+\quad\Longrightarrow\quad
+H = \arccos\!\left(\frac{\sin h - \sin\varphi\,\sin\delta}{\cos\varphi\,\cos\delta}\right)
 $$
 
 où $h$ est l'altitude du Soleil (négative sous l'horizon, pour le *Fajr* et
@@ -330,22 +370,40 @@ g &= 357{,}528 + 0{,}985\,600\,3\,n \pmod{360} && \text{(anomalie moyenne)}\\
 $$
 
 avec $\alpha = \operatorname{atan2}(\cos\varepsilon\sin\lambda,\ \cos\lambda)$.
-Chaque prière s'obtient ensuite par la formule maîtresse, en y injectant son
-altitude $h$ :
+Chaque prière s'obtient ensuite en injectant son altitude $h$ dans l'angle
+horaire $H(h) = \arccos\!\big[(\sin h - \sin\varphi\sin\delta)/(\cos\varphi\cos\delta)\big]$,
+puis en convertissant en temps autour du midi solaire. Les six horaires ont alors
+chacun leur formule explicite :
 
-- **Chourūq / Maghrib** : $h \approx -0{,}833^\circ$, mais Tawqit **raffine
-  l'horizon** en ajoutant la réfraction (selon la pression et la température), le
-  demi-diamètre solaire, la parallaxe et l'**abaissement d'horizon** lié à
-  l'altitude du lieu — c'est le *Tamkīn* mis en équations.
-- **Fajr / ʿIshāʾ** : $h = -\alpha$, où $\alpha$ est l'angle de dépression choisi.
-- **ʿAṣr** : l'altitude est fixée par la longueur d'ombre,
-  $$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\qquad t = 1\ (\text{majorité}),\ t = 2\ (\text{ḥanafite}).$$
+**Ḏuhr** — le Soleil passe au méridien ($H = 0$), c'est le pivot de la journée :
+$$t_{\text{Ḏuhr}} = 12 + \mathrm{TZ} - \frac{\lambda}{15} - \frac{E}{60}.$$
 
-Enfin, deux minutes de précaution sont ajoutées au *Maghrib*, et aux très hautes
-latitudes — lorsque l'angle n'est jamais atteint — l'application bascule sur les
-règles de *Takdīr* (ville la plus proche, division de la nuit).
+**Fajr** — aube astronomique, le Soleil à $h = -18^\circ$ sous l'horizon :
+$$t_{\text{Fajr}} = t_{\text{Ḏuhr}} - \frac{H(-18^\circ)}{15}.$$
 
-![Les six horaires au fil de l'année à La Mecque](/tawqit/prieres_makkah_fr.png)
+**Chourūq** (lever) — le bord supérieur du Soleil touche l'horizon, $h = h_0$ :
+$$t_{\text{Chourūq}} = t_{\text{Ḏuhr}} - \frac{H(h_0)}{15}.$$
+
+**ʿAṣr** — l'altitude est fixée par la longueur de l'ombre :
+$$h_{\text{ʿAṣr}} = \operatorname{arccot}\!\big(t + \tan|\varphi - \delta|\big),\quad t = 1\ (\text{majorité}),\ 2\ (\text{ḥanafite}),\qquad
+t_{\text{ʿAṣr}} = t_{\text{Ḏuhr}} + \frac{H(h_{\text{ʿAṣr}})}{15}.$$
+
+**Maghrib** (coucher) — bord supérieur à l'horizon, $h = h_0$, plus deux minutes de précaution :
+$$t_{\text{Maghrib}} = t_{\text{Ḏuhr}} + \frac{H(h_0)}{15} + \frac{2}{60}.$$
+
+**ʿIshāʾ** — crépuscule astronomique, le Soleil de nouveau à $h = -18^\circ$ :
+$$t_{\text{ʿIshāʾ}} = t_{\text{Ḏuhr}} + \frac{H(-18^\circ)}{15}.$$
+
+Pour le **lever** et le **coucher**, Tawqit ne se contente pas de $h = 0$ : il
+**raffine l'horizon** à $h_0 \approx -0{,}833^\circ$ en cumulant la réfraction
+atmosphérique (selon la pression et la température), le demi-diamètre solaire, la
+parallaxe et l'**abaissement d'horizon** lié à l'altitude du lieu — c'est le
+*Tamkīn* mis en équations. Aux très hautes latitudes, lorsque l'angle n'est
+jamais atteint, l'application bascule sur les règles de *Takdīr* (ville la plus
+proche, division de la nuit).
+
+<img src="/tawqit/six_prieres_light.png" alt="Les six horaires au fil de l'année à La Mecque" class="only-light" />
+<img src="/tawqit/six_prieres_dark.png" alt="Les six horaires au fil de l'année à La Mecque" class="only-dark" />
 
 *Les six horaires calculés jour par jour à La Mecque (UTC+3, sans changement
 d'heure). Le *Ḏuhr* bouge peu (équation du temps) ; *Fajr*/*Chourūq* et

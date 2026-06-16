@@ -13,7 +13,7 @@ Lancer :  python3 six_prieres.py
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-#plt.style.use('dark_background')
+plt.style.use('dark_background')
 
 # ───────────────────── Lieu (modifiable) ─────────────────────
 LAT, LON, TZ = 21.4225, 39.8262, 3.0     # La Mecque, UTC+3 (pas de DST)
@@ -95,7 +95,7 @@ marqueurs = ["o", "s", "^", "D", "v", "P"]   # un marqueur distinct par prière
 
 for (nom, heures), col, mk in zip(prieres.items(), couleurs, marqueurs):
     ax.plot(n_days, heures, color=col, label=nom,
-            marker=mk, markevery=30, markersize=38)
+            marker=mk, markevery=30, markersize=38, markerfacecolor='none', markeredgewidth=8)
 
 ax.set_xlabel(r"Jours $J$")
 ax.set_ylabel(r"Heure locale")
@@ -105,6 +105,6 @@ ax.set_yticks([0, 4, 8, 12, 16, 20, 24])
 ax.legend(loc="lower center", frameon=False, ncol=3,fontsize=60)
 
 # Pour enregistrer au lieu d'afficher :
-fig.savefig("six_prieres_white.pdf", dpi=36, bbox_inches="tight")
+fig.savefig("six_prieres_dark.pdf", dpi=36, bbox_inches="tight")
 
 plt.show()
