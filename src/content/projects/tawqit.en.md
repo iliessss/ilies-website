@@ -595,6 +595,16 @@ $$ R \approx 0.569^\circ \times \frac{0.28\,P}{T + 273} $$
 ($P$ in hPa, $T$ in °C), to which the **horizon dip** $D = 0.0353\,\sqrt{h_{\text{alt}}}$
 (from the site's altitude, in metres) is added.
 
+Concretely, refraction at the horizon ranges from ~$29'$ (warm, rarefied air) to
+~$39'$ (cold, dense anticyclonic air):
+
+<img src="/tawqit/refraction_sensibilite_light.png" alt="Sensitivity of refraction to temperature and pressure" class="only-light" />
+<img src="/tawqit/refraction_sensibilite_dark.png" alt="Sensitivity of refraction to temperature and pressure" class="only-dark" />
+
+*Horizon refraction $R$ versus temperature, for three pressures. It decreases as
+$1/(T+273)$ and grows with $P$ — the signature of the $P/T$ factor. The marked
+point is the standard condition ($1013$ hPa, $15$ °C, i.e. ~$34'$).*
+
 ## 2. The effect at the horizon
 
 Refraction is **maximal at the horizon** (~$34'$) and decreases very quickly with

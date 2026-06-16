@@ -616,6 +616,16 @@ $$ R \approx 0{,}569^\circ \times \frac{0{,}28\,P}{T + 273} $$
 ($P$ en hPa, $T$ en °C), à laquelle s'ajoute l'**abaissement de l'horizon**
 $D = 0{,}0353\,\sqrt{h_{\text{alt}}}$ dû à l'altitude du lieu (en mètres).
 
+Concrètement, la réfraction à l'horizon varie de ~$29'$ (air chaud et raréfié) à
+~$39'$ (air froid et dense d'un anticyclone) :
+
+<img src="/tawqit/refraction_sensibilite_light.png" alt="Sensibilité de la réfraction à la température et à la pression" class="only-light" />
+<img src="/tawqit/refraction_sensibilite_dark.png" alt="Sensibilité de la réfraction à la température et à la pression" class="only-dark" />
+
+*La réfraction $R$ à l'horizon en fonction de la température, pour trois pressions.
+Elle décroît en $1/(T+273)$ et croît avec $P$ — la signature du facteur $P/T$. Le
+point marqué correspond aux conditions standard ($1013$ hPa, $15$ °C, soit ~$34'$).*
+
 ## 2. L'effet à l'horizon
 
 La réfraction est **maximale à l'horizon** (~$34'$) et décroît très vite avec la
