@@ -98,9 +98,10 @@ Two contemporary difficulties arise:
   **unobservable**, and twilight can persist all night. Scholars then resort to
   ***Takdīr*** (estimation): the method of the nearest city with "normal" nights
   (*aqrab al-bilād*), or the **proportional division of the night**.
-- **Light pollution.** Artificial city lighting now masks the faintest signs,
-  such as true dawn. Since individual observation is deceived by the urban glow,
-  the rigorous computations of the *muwaqqitūn* become more valuable than ever.
+- **Light pollution.** Since the 1970s, artificial city lighting has masked the
+  faintest signs, such as true dawn. Since individual observation is deceived by
+  the urban glow, the rigorous computations of the *muwaqqitūn* become more
+  valuable than ever.
 
 ## The Tawqit app
 

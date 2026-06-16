@@ -101,8 +101,8 @@ Deux difficultés contemporaines s'ajoutent :
   toute la nuit. Les savants recourent alors au ***Takdīr*** (estimation) : la
   méthode de la ville la plus proche aux nuits « normales » (*aqrab al-bilād*) ou
   la **division proportionnelle de la nuit**.
-- **La pollution lumineuse.** L'éclairage artificiel des villes masque
-  aujourd'hui les signes les plus ténus, comme l'aube véritable. L'observation
+- **La pollution lumineuse.** Depuis les années 1970, l'éclairage artificiel des
+  villes masque les signes les plus ténus, comme l'aube véritable. L'observation
   individuelle étant trompée par le halo urbain, les calculs rigoureux des
   *muwaqqitūn* deviennent plus précieux que jamais.
 
