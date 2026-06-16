@@ -387,6 +387,45 @@ dip** due to the site's altitude — the *Tamkīn* turned into equations. At ver
 high latitudes, when the angle is never reached, the app switches to the *Takdīr*
 rules (nearest city, division of the night).
 
+### A full worked example: Makkah, 15 June 2025
+
+Let us run the whole calculation for Makkah ($\varphi = 21.42^\circ$ N,
+$\lambda = 39.83^\circ$ E, UTC+3, altitude $300$ m).
+
+**1) Sun's position.** The Julian Day at noon is $\mathrm{JD} = 2\,460\,842$, so
+$n = \mathrm{JD} - 2\,451\,545 = 9297$. The low-precision formulas give the mean
+longitude $L = 84.03^\circ$, the anomaly $g = 160.65^\circ$, hence the ecliptic
+longitude $\lambda = 84.65^\circ$, and then
+
+$$
+\delta = \arcsin\!\big(\sin 23.44^\circ \cdot \sin 84.65^\circ\big) = 23.33^\circ,
+\qquad E = -0.58\ \text{min}.
+$$
+
+**2) Solar noon (Ẓuhr).**
+
+$$
+t_{\text{Ẓuhr}} = 12 + 3 - \frac{39.83}{15} - \frac{-0.58}{60} = 12.35\ \text{h} \;\to\; 12\text{:}21.
+$$
+
+**3) The other prayers.** Compute the hour angle $H(h)$ for each altitude, then
+$t = t_{\text{Ẓuhr}} \mp H/15$. For sunrise and sunset the corrected horizon
+combines refraction ($R = 0.54^\circ$), semi-diameter ($0.26^\circ$) and horizon
+dip ($D = 0.61^\circ$ for $300$ m), i.e. $h_0 = -1.41^\circ$.
+
+| Prayer | altitude *h* | *H* | time |
+| --- | --- | --- | --- |
+| Fajr | −18° | 122.1° | 04:13 |
+| Shurūq | −1.41° | 101.4° | 05:36 |
+| Ẓuhr | *H* = 0 | 0° | 12:21 |
+| ʿAṣr | 44.1° | 49.9° | 15:41 |
+| Maghrib | −1.41° | 101.4° | 19:09 |
+| ʿIshāʾ | −18° | 122.1° | 20:29 |
+
+(*ʿAṣr* uses $h = \operatorname{arccot}(1 + \tan|\varphi-\delta|) = 44.1^\circ$,
+and *Maghrib* gets its two precautionary minutes.) These are one day's six times;
+repeated over the whole year, they give:
+
 <img src="/tawqit/six_prieres_light.png" alt="The six daily times over the year at Makkah" class="only-light" />
 <img src="/tawqit/six_prieres_dark.png" alt="The six daily times over the year at Makkah" class="only-dark" />
 

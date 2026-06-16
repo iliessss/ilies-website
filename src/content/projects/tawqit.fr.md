@@ -401,6 +401,46 @@ parallaxe et l'**abaissement d'horizon** lié à l'altitude du lieu — c'est le
 jamais atteint, l'application bascule sur les règles de *Takdīr* (ville la plus
 proche, division de la nuit).
 
+### Exemple complet : La Mecque, le 15 juin 2025
+
+Déroulons le calcul de bout en bout pour La Mecque ($\varphi = 21{,}42^\circ$ N,
+$\lambda = 39{,}83^\circ$ E, fuseau UTC+3, altitude $300$ m).
+
+**1) Position du Soleil.** Le jour julien à midi est $\mathrm{JD} = 2\,460\,842$,
+soit $n = \mathrm{JD} - 2\,451\,545 = 9297$. Les formules de basse précision
+donnent la longitude moyenne $L = 84{,}03^\circ$, l'anomalie $g = 160{,}65^\circ$,
+donc la longitude écliptique $\lambda = 84{,}65^\circ$, puis
+
+$$
+\delta = \arcsin\!\big(\sin 23{,}44^\circ \cdot \sin 84{,}65^\circ\big) = 23{,}33^\circ,
+\qquad E = -0{,}58\ \text{min}.
+$$
+
+**2) Midi solaire (Ḏuhr).**
+
+$$
+t_{\text{Ḏuhr}} = 12 + 3 - \frac{39{,}83}{15} - \frac{-0{,}58}{60} = 12{,}35\ \text{h} \;\to\; 12\text{h}21.
+$$
+
+**3) Les autres prières.** On calcule l'angle horaire $H(h)$ pour l'altitude de
+chacune, puis $t = t_{\text{Ḏuhr}} \mp H/15$. Pour le lever et le coucher,
+l'horizon corrigé combine réfraction ($R = 0{,}54^\circ$), demi-diamètre
+($0{,}26^\circ$) et abaissement d'horizon ($D = 0{,}61^\circ$ pour $300$ m), soit
+$h_0 = -1{,}41^\circ$.
+
+| Prière | altitude *h* | *H* | heure |
+| --- | --- | --- | --- |
+| Fajr | −18° | 122,1° | 04h13 |
+| Chourouq | −1,41° | 101,4° | 05h36 |
+| Ḏuhr | *H* = 0 | 0° | 12h21 |
+| ʿAṣr | 44,1° | 49,9° | 15h41 |
+| Maghrib | −1,41° | 101,4° | 19h09 |
+| ʿIshāʾ | −18° | 122,1° | 20h29 |
+
+(L'ʿAṣr utilise $h = \operatorname{arccot}(1 + \tan|\varphi-\delta|) = 44{,}1^\circ$,
+et le Maghrib reçoit ses deux minutes de précaution.) Voilà les six horaires d'une
+journée ; répété sur toute l'année, on obtient :
+
 <img src="/tawqit/six_prieres_light.png" alt="Les six horaires au fil de l'année à La Mecque" class="only-light" />
 <img src="/tawqit/six_prieres_dark.png" alt="Les six horaires au fil de l'année à La Mecque" class="only-dark" />
 
